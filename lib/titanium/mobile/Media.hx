@@ -153,8 +153,6 @@ extern class Media
 	public static function beep():Void;
 	public static function createAudioPlayer(params:Dynamic):AudioPlayer;
 	public static function createAudioRecorder(params:Dynamic):AudioRecorder;
-	public static function createItem(params:Dynamic):MediaItem;
-	public static function createMusicPlayer(params:Dynamic):MusicPlayer;
 	public static function createSound(params:Dynamic):Sound;
 	public static function createVideoPlayer(params:Dynamic):VideoPlayer;
 	public static function hideCamera():Void;
@@ -169,6 +167,8 @@ extern class Media
 	public static function takeScreenshot(onCapture: { media:Dynamic }->Void):Void;
 	public static function vibrate():Void;
 	#if iphoneos
+	public static function createMusicPlayer(params:Dynamic):MusicPlayer;s
+	public static function createItem(params:Dynamic):MediaItem;
 	public static function showMusicLibrary(options:Dynamic):Void;
 	#end
 }

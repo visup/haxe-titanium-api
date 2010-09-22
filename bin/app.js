@@ -1,21 +1,32 @@
 $estr = function() { return js.Boot.__string_rec(this,''); }
 List = function(p) { if( p === $_ ) return; {
+	$s.push("List::new");
+	var $spos = $s.length;
 	this.length = 0;
+	$s.pop();
 }}
 List.__name__ = ["List"];
 List.prototype.add = function(item) {
+	$s.push("List::add");
+	var $spos = $s.length;
 	var x = [item];
 	if(this.h == null) this.h = x;
 	else this.q[1] = x;
 	this.q = x;
 	this.length++;
+	$s.pop();
 }
 List.prototype.clear = function() {
+	$s.push("List::clear");
+	var $spos = $s.length;
 	this.h = null;
 	this.q = null;
 	this.length = 0;
+	$s.pop();
 }
 List.prototype.filter = function(f) {
+	$s.push("List::filter");
+	var $spos = $s.length;
 	var l2 = new List();
 	var l = this.h;
 	while(l != null) {
@@ -23,26 +34,69 @@ List.prototype.filter = function(f) {
 		l = l[1];
 		if(f(v)) l2.add(v);
 	}
-	return l2;
+	{
+		$s.pop();
+		return l2;
+	}
+	$s.pop();
 }
 List.prototype.first = function() {
-	return (this.h == null?null:this.h[0]);
+	$s.push("List::first");
+	var $spos = $s.length;
+	{
+		var $tmp = (this.h == null?null:this.h[0]);
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 List.prototype.h = null;
 List.prototype.isEmpty = function() {
-	return (this.h == null);
+	$s.push("List::isEmpty");
+	var $spos = $s.length;
+	{
+		var $tmp = (this.h == null);
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 List.prototype.iterator = function() {
-	return { h : this.h, hasNext : function() {
-		return (this.h != null);
-	}, next : function() {
-		if(this.h == null) return null;
-		var x = this.h[0];
-		this.h = this.h[1];
-		return x;
-	}}
+	$s.push("List::iterator");
+	var $spos = $s.length;
+	{
+		var $tmp = { h : this.h, hasNext : function() {
+			$s.push("List::iterator@155");
+			var $spos = $s.length;
+			{
+				var $tmp = (this.h != null);
+				$s.pop();
+				return $tmp;
+			}
+			$s.pop();
+		}, next : function() {
+			$s.push("List::iterator@158");
+			var $spos = $s.length;
+			if(this.h == null) {
+				$s.pop();
+				return null;
+			}
+			var x = this.h[0];
+			this.h = this.h[1];
+			{
+				$s.pop();
+				return x;
+			}
+			$s.pop();
+		}}
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 List.prototype.join = function(sep) {
+	$s.push("List::join");
+	var $spos = $s.length;
 	var s = new StringBuf();
 	var first = true;
 	var l = this.h;
@@ -52,13 +106,27 @@ List.prototype.join = function(sep) {
 		s.b[s.b.length] = l[0];
 		l = l[1];
 	}
-	return s.b.join("");
+	{
+		var $tmp = s.b.join("");
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 List.prototype.last = function() {
-	return (this.q == null?null:this.q[0]);
+	$s.push("List::last");
+	var $spos = $s.length;
+	{
+		var $tmp = (this.q == null?null:this.q[0]);
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 List.prototype.length = null;
 List.prototype.map = function(f) {
+	$s.push("List::map");
+	var $spos = $s.length;
 	var b = new List();
 	var l = this.h;
 	while(l != null) {
@@ -66,24 +134,42 @@ List.prototype.map = function(f) {
 		l = l[1];
 		b.add(f(v));
 	}
-	return b;
+	{
+		$s.pop();
+		return b;
+	}
+	$s.pop();
 }
 List.prototype.pop = function() {
-	if(this.h == null) return null;
+	$s.push("List::pop");
+	var $spos = $s.length;
+	if(this.h == null) {
+		$s.pop();
+		return null;
+	}
 	var x = this.h[0];
 	this.h = this.h[1];
 	if(this.h == null) this.q = null;
 	this.length--;
-	return x;
+	{
+		$s.pop();
+		return x;
+	}
+	$s.pop();
 }
 List.prototype.push = function(item) {
+	$s.push("List::push");
+	var $spos = $s.length;
 	var x = [item,this.h];
 	this.h = x;
 	if(this.q == null) this.q = x;
 	this.length++;
+	$s.pop();
 }
 List.prototype.q = null;
 List.prototype.remove = function(v) {
+	$s.push("List::remove");
+	var $spos = $s.length;
 	var prev = null;
 	var l = this.h;
 	while(l != null) {
@@ -92,14 +178,23 @@ List.prototype.remove = function(v) {
 			else prev[1] = l[1];
 			if(this.q == l) this.q = prev;
 			this.length--;
-			return true;
+			{
+				$s.pop();
+				return true;
+			}
 		}
 		prev = l;
 		l = l[1];
 	}
-	return false;
+	{
+		$s.pop();
+		return false;
+	}
+	$s.pop();
 }
 List.prototype.toString = function() {
+	$s.push("List::toString");
+	var $spos = $s.length;
 	var s = new StringBuf();
 	var first = true;
 	var l = this.h;
@@ -111,51 +206,104 @@ List.prototype.toString = function() {
 		l = l[1];
 	}
 	s.b[s.b.length] = "}";
-	return s.b.join("");
+	{
+		var $tmp = s.b.join("");
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 List.prototype.__class__ = List;
 IntIter = function(min,max) { if( min === $_ ) return; {
+	$s.push("IntIter::new");
+	var $spos = $s.length;
 	this.min = min;
 	this.max = max;
+	$s.pop();
 }}
 IntIter.__name__ = ["IntIter"];
 IntIter.prototype.hasNext = function() {
-	return this.min < this.max;
+	$s.push("IntIter::hasNext");
+	var $spos = $s.length;
+	{
+		var $tmp = this.min < this.max;
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 IntIter.prototype.max = null;
 IntIter.prototype.min = null;
 IntIter.prototype.next = function() {
-	return this.min++;
+	$s.push("IntIter::next");
+	var $spos = $s.length;
+	{
+		var $tmp = this.min++;
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 IntIter.prototype.__class__ = IntIter;
 if(typeof js=='undefined') js = {}
 js.Boot = function() { }
 js.Boot.__name__ = ["js","Boot"];
 js.Boot.__trace = function(v,i) {
+	$s.push("js.Boot::__trace");
+	var $spos = $s.length;
 	var msg = (i != null?((i.fileName + ":") + i.lineNumber) + ": ":"");
 	msg += js.Boot.__string_rec(v,"") + "\n";
 	Titanium.API.debug(msg);
+	$s.pop();
 }
 js.Boot.__closure = function(o,f) {
+	$s.push("js.Boot::__closure");
+	var $spos = $s.length;
 	var m = o[f];
-	if(m == null) return null;
+	if(m == null) {
+		$s.pop();
+		return null;
+	}
 	var f1 = function() {
-		return m.apply(o,arguments);
+		$s.push("js.Boot::__closure@42");
+		var $spos = $s.length;
+		{
+			var $tmp = m.apply(o,arguments);
+			$s.pop();
+			return $tmp;
+		}
+		$s.pop();
 	}
 	f1.scope = o;
 	f1.method = m;
-	return f1;
+	{
+		$s.pop();
+		return f1;
+	}
+	$s.pop();
 }
 js.Boot.__string_rec = function(o,s) {
-	if(o == null) return "null";
-	if(s.length >= 5) return "<...>";
+	$s.push("js.Boot::__string_rec");
+	var $spos = $s.length;
+	if(o == null) {
+		$s.pop();
+		return "null";
+	}
+	if(s.length >= 5) {
+		$s.pop();
+		return "<...>";
+	}
 	var t = typeof(o);
 	if(t == "function" && (o.__name__ != null || o.__ename__ != null)) t = "object";
 	switch(t) {
 	case "object":{
 		if(o instanceof Array) {
 			if(o.__enum__ != null) {
-				if(o.length == 2) return o[0];
+				if(o.length == 2) {
+					var $tmp = o[0];
+					$s.pop();
+					return $tmp;
+				}
 				var str = o[0] + "(";
 				s += "\t";
 				{
@@ -166,7 +314,11 @@ js.Boot.__string_rec = function(o,s) {
 						else str += js.Boot.__string_rec(o[i],s);
 					}
 				}
-				return str + ")";
+				{
+					var $tmp = str + ")";
+					$s.pop();
+					return $tmp;
+				}
 			}
 			var l = o.length;
 			var i;
@@ -180,7 +332,10 @@ js.Boot.__string_rec = function(o,s) {
 				}
 			}
 			str += "]";
-			return str;
+			{
+				$s.pop();
+				return str;
+			}
 		}
 		var tostr;
 		try {
@@ -190,13 +345,22 @@ js.Boot.__string_rec = function(o,s) {
 			{
 				var e = $e0;
 				{
-					return "???";
+					$e = [];
+					while($s.length >= $spos) $e.unshift($s.pop());
+					$s.push($e[0]);
+					{
+						$s.pop();
+						return "???";
+					}
 				}
 			}
 		}
 		if(tostr != null && tostr != Object.toString) {
 			var s2 = o.toString();
-			if(s2 != "[object Object]") return s2;
+			if(s2 != "[object Object]") {
+				$s.pop();
+				return s2;
+			}
 		}
 		var k = null;
 		var str = "{\n";
@@ -210,110 +374,243 @@ js.Boot.__string_rec = function(o,s) {
 		}
 		s = s.substring(1);
 		str += ("\n" + s) + "}";
-		return str;
+		{
+			$s.pop();
+			return str;
+		}
 	}break;
 	case "function":{
-		return "<function>";
+		{
+			$s.pop();
+			return "<function>";
+		}
 	}break;
 	case "string":{
-		return o;
+		{
+			$s.pop();
+			return o;
+		}
 	}break;
 	default:{
-		return String(o);
+		{
+			var $tmp = String(o);
+			$s.pop();
+			return $tmp;
+		}
 	}break;
 	}
+	$s.pop();
 }
 js.Boot.__interfLoop = function(cc,cl) {
-	if(cc == null) return false;
-	if(cc == cl) return true;
+	$s.push("js.Boot::__interfLoop");
+	var $spos = $s.length;
+	if(cc == null) {
+		$s.pop();
+		return false;
+	}
+	if(cc == cl) {
+		$s.pop();
+		return true;
+	}
 	var intf = cc.__interfaces__;
 	if(intf != null) {
 		var _g1 = 0, _g = intf.length;
 		while(_g1 < _g) {
 			var i = _g1++;
 			var i1 = intf[i];
-			if(i1 == cl || js.Boot.__interfLoop(i1,cl)) return true;
+			if(i1 == cl || js.Boot.__interfLoop(i1,cl)) {
+				$s.pop();
+				return true;
+			}
 		}
 	}
-	return js.Boot.__interfLoop(cc.__super__,cl);
+	{
+		var $tmp = js.Boot.__interfLoop(cc.__super__,cl);
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 js.Boot.__instanceof = function(o,cl) {
+	$s.push("js.Boot::__instanceof");
+	var $spos = $s.length;
 	try {
 		if(o instanceof cl) {
-			if(cl == Array) return (o.__enum__ == null);
+			if(cl == Array) {
+				var $tmp = (o.__enum__ == null);
+				$s.pop();
+				return $tmp;
+			}
+			{
+				$s.pop();
+				return true;
+			}
+		}
+		if(js.Boot.__interfLoop(o.__class__,cl)) {
+			$s.pop();
 			return true;
 		}
-		if(js.Boot.__interfLoop(o.__class__,cl)) return true;
 	}
 	catch( $e0 ) {
 		{
 			var e = $e0;
 			{
-				if(cl == null) return false;
+				$e = [];
+				while($s.length >= $spos) $e.unshift($s.pop());
+				$s.push($e[0]);
+				if(cl == null) {
+					$s.pop();
+					return false;
+				}
 			}
 		}
 	}
 	switch(cl) {
 	case Int:{
-		return Math.ceil(o%2147483648.0) === o;
+		{
+			var $tmp = Math.ceil(o%2147483648.0) === o;
+			$s.pop();
+			return $tmp;
+		}
 	}break;
 	case Float:{
-		return typeof(o) == "number";
+		{
+			var $tmp = typeof(o) == "number";
+			$s.pop();
+			return $tmp;
+		}
 	}break;
 	case Bool:{
-		return o === true || o === false;
+		{
+			var $tmp = o === true || o === false;
+			$s.pop();
+			return $tmp;
+		}
 	}break;
 	case String:{
-		return typeof(o) == "string";
+		{
+			var $tmp = typeof(o) == "string";
+			$s.pop();
+			return $tmp;
+		}
 	}break;
 	case Dynamic:{
-		return true;
+		{
+			$s.pop();
+			return true;
+		}
 	}break;
 	default:{
-		if(o == null) return false;
-		return o.__enum__ == cl || (cl == Class && o.__name__ != null) || (cl == Enum && o.__ename__ != null);
+		if(o == null) {
+			$s.pop();
+			return false;
+		}
+		{
+			var $tmp = o.__enum__ == cl || (cl == Class && o.__name__ != null) || (cl == Enum && o.__ename__ != null);
+			$s.pop();
+			return $tmp;
+		}
 	}break;
 	}
+	$s.pop();
 }
 js.Boot.__init = function() {
+	$s.push("js.Boot::__init");
+	var $spos = $s.length;
 	Array.prototype.copy = Array.prototype.slice;
 	Array.prototype.insert = function(i,x) {
+		$s.push("js.Boot::__init@178");
+		var $spos = $s.length;
 		this.splice(i,0,x);
+		$s.pop();
 	}
 	Array.prototype.remove = (Array.prototype.indexOf?function(obj) {
+		$s.push("js.Boot::__init@181");
+		var $spos = $s.length;
 		var idx = this.indexOf(obj);
-		if(idx == -1) return false;
+		if(idx == -1) {
+			$s.pop();
+			return false;
+		}
 		this.splice(idx,1);
-		return true;
+		{
+			$s.pop();
+			return true;
+		}
+		$s.pop();
 	}:function(obj) {
+		$s.push("js.Boot::__init@186");
+		var $spos = $s.length;
 		var i = 0;
 		var l = this.length;
 		while(i < l) {
 			if(this[i] == obj) {
 				this.splice(i,1);
-				return true;
+				{
+					$s.pop();
+					return true;
+				}
 			}
 			i++;
 		}
-		return false;
+		{
+			$s.pop();
+			return false;
+		}
+		$s.pop();
 	});
 	Array.prototype.iterator = function() {
-		return { cur : 0, arr : this, hasNext : function() {
-			return this.cur < this.arr.length;
-		}, next : function() {
-			return this.arr[this.cur++];
-		}}
+		$s.push("js.Boot::__init@198");
+		var $spos = $s.length;
+		{
+			var $tmp = { cur : 0, arr : this, hasNext : function() {
+				$s.push("js.Boot::__init@198@202");
+				var $spos = $s.length;
+				{
+					var $tmp = this.cur < this.arr.length;
+					$s.pop();
+					return $tmp;
+				}
+				$s.pop();
+			}, next : function() {
+				$s.push("js.Boot::__init@198@205");
+				var $spos = $s.length;
+				{
+					var $tmp = this.arr[this.cur++];
+					$s.pop();
+					return $tmp;
+				}
+				$s.pop();
+			}}
+			$s.pop();
+			return $tmp;
+		}
+		$s.pop();
 	}
 	var cca = String.prototype.charCodeAt;
 	String.prototype.cca = cca;
 	String.prototype.charCodeAt = function(i) {
+		$s.push("js.Boot::__init@212");
+		var $spos = $s.length;
 		var x = cca.call(this,i);
-		if(isNaN(x)) return null;
-		return x;
+		if(isNaN(x)) {
+			$s.pop();
+			return null;
+		}
+		{
+			$s.pop();
+			return x;
+		}
+		$s.pop();
 	}
 	var oldsub = String.prototype.substr;
 	String.prototype.substr = function(pos,len) {
-		if(pos != null && pos != 0 && len != null && len < 0) return "";
+		$s.push("js.Boot::__init@219");
+		var $spos = $s.length;
+		if(pos != null && pos != 0 && len != null && len < 0) {
+			$s.pop();
+			return "";
+		}
 		if(len == null) len = this.length;
 		if(pos < 0) {
 			pos = this.length + pos;
@@ -322,17 +619,28 @@ js.Boot.__init = function() {
 		else if(len < 0) {
 			len = (this.length + len) - pos;
 		}
-		return oldsub.apply(this,[pos,len]);
+		{
+			var $tmp = oldsub.apply(this,[pos,len]);
+			$s.pop();
+			return $tmp;
+		}
+		$s.pop();
 	}
 	$closure = js.Boot.__closure;
+	$s.pop();
 }
 js.Boot.prototype.__class__ = js.Boot;
 EReg = function(r,opt) { if( r === $_ ) return; {
+	$s.push("EReg::new");
+	var $spos = $s.length;
 	opt = opt.split("u").join("");
 	this.r = new RegExp(r,opt);
+	$s.pop();
 }}
 EReg.__name__ = ["EReg"];
 EReg.prototype.customReplace = function(s,f) {
+	$s.push("EReg::customReplace");
+	var $spos = $s.length;
 	var buf = new StringBuf();
 	while(true) {
 		if(!this.match(s)) break;
@@ -341,50 +649,115 @@ EReg.prototype.customReplace = function(s,f) {
 		s = this.matchedRight();
 	}
 	buf.b[buf.b.length] = s;
-	return buf.b.join("");
+	{
+		var $tmp = buf.b.join("");
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 EReg.prototype.match = function(s) {
+	$s.push("EReg::match");
+	var $spos = $s.length;
 	this.r.m = this.r.exec(s);
 	this.r.s = s;
 	this.r.l = RegExp.leftContext;
 	this.r.r = RegExp.rightContext;
-	return (this.r.m != null);
+	{
+		var $tmp = (this.r.m != null);
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 EReg.prototype.matched = function(n) {
-	return (this.r.m != null && n >= 0 && n < this.r.m.length?this.r.m[n]:(function($this) {
-		var $r;
-		throw "EReg::matched";
-		return $r;
-	}(this)));
+	$s.push("EReg::matched");
+	var $spos = $s.length;
+	{
+		var $tmp = (this.r.m != null && n >= 0 && n < this.r.m.length?this.r.m[n]:(function($this) {
+			var $r;
+			throw "EReg::matched";
+			return $r;
+		}(this)));
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 EReg.prototype.matchedLeft = function() {
+	$s.push("EReg::matchedLeft");
+	var $spos = $s.length;
 	if(this.r.m == null) throw "No string matched";
-	if(this.r.l == null) return this.r.s.substr(0,this.r.m.index);
-	return this.r.l;
+	if(this.r.l == null) {
+		var $tmp = this.r.s.substr(0,this.r.m.index);
+		$s.pop();
+		return $tmp;
+	}
+	{
+		var $tmp = this.r.l;
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 EReg.prototype.matchedPos = function() {
+	$s.push("EReg::matchedPos");
+	var $spos = $s.length;
 	if(this.r.m == null) throw "No string matched";
-	return { pos : this.r.m.index, len : this.r.m[0].length}
+	{
+		var $tmp = { pos : this.r.m.index, len : this.r.m[0].length}
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 EReg.prototype.matchedRight = function() {
+	$s.push("EReg::matchedRight");
+	var $spos = $s.length;
 	if(this.r.m == null) throw "No string matched";
 	if(this.r.r == null) {
 		var sz = this.r.m.index + this.r.m[0].length;
-		return this.r.s.substr(sz,this.r.s.length - sz);
+		{
+			var $tmp = this.r.s.substr(sz,this.r.s.length - sz);
+			$s.pop();
+			return $tmp;
+		}
 	}
-	return this.r.r;
+	{
+		var $tmp = this.r.r;
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 EReg.prototype.r = null;
 EReg.prototype.replace = function(s,by) {
-	return s.replace(this.r,by);
+	$s.push("EReg::replace");
+	var $spos = $s.length;
+	{
+		var $tmp = s.replace(this.r,by);
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 EReg.prototype.split = function(s) {
+	$s.push("EReg::split");
+	var $spos = $s.length;
 	var d = "#__delim__#";
-	return s.replace(this.r,d).split(d);
+	{
+		var $tmp = s.replace(this.r,d).split(d);
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 EReg.prototype.__class__ = EReg;
 Xml = function(p) { if( p === $_ ) return; {
+	$s.push("Xml::new");
+	var $spos = $s.length;
 	null;
+	$s.pop();
 }}
 Xml.__name__ = ["Xml"];
 Xml.Element = null;
@@ -395,6 +768,8 @@ Xml.DocType = null;
 Xml.Prolog = null;
 Xml.Document = null;
 Xml.parse = function(str) {
+	$s.push("Xml::parse");
+	var $spos = $s.length;
 	var rules = [Xml.enode,Xml.epcdata,Xml.eend,Xml.ecdata,Xml.edoctype,Xml.ecomment,Xml.eprolog];
 	var nrules = rules.length;
 	var current = Xml.createDocument();
@@ -502,51 +877,97 @@ Xml.parse = function(str) {
 		}
 	}
 	if(!stack.isEmpty()) throw "Xml parse error : Unclosed " + stack.last().getNodeName();
-	return current;
+	{
+		$s.pop();
+		return current;
+	}
+	$s.pop();
 }
 Xml.createElement = function(name) {
+	$s.push("Xml::createElement");
+	var $spos = $s.length;
 	var r = new Xml();
 	r.nodeType = Xml.Element;
 	r._children = new Array();
 	r._attributes = new Hash();
 	r.setNodeName(name);
-	return r;
+	{
+		$s.pop();
+		return r;
+	}
+	$s.pop();
 }
 Xml.createPCData = function(data) {
+	$s.push("Xml::createPCData");
+	var $spos = $s.length;
 	var r = new Xml();
 	r.nodeType = Xml.PCData;
 	r.setNodeValue(data);
-	return r;
+	{
+		$s.pop();
+		return r;
+	}
+	$s.pop();
 }
 Xml.createCData = function(data) {
+	$s.push("Xml::createCData");
+	var $spos = $s.length;
 	var r = new Xml();
 	r.nodeType = Xml.CData;
 	r.setNodeValue(data);
-	return r;
+	{
+		$s.pop();
+		return r;
+	}
+	$s.pop();
 }
 Xml.createComment = function(data) {
+	$s.push("Xml::createComment");
+	var $spos = $s.length;
 	var r = new Xml();
 	r.nodeType = Xml.Comment;
 	r.setNodeValue(data);
-	return r;
+	{
+		$s.pop();
+		return r;
+	}
+	$s.pop();
 }
 Xml.createDocType = function(data) {
+	$s.push("Xml::createDocType");
+	var $spos = $s.length;
 	var r = new Xml();
 	r.nodeType = Xml.DocType;
 	r.setNodeValue(data);
-	return r;
+	{
+		$s.pop();
+		return r;
+	}
+	$s.pop();
 }
 Xml.createProlog = function(data) {
+	$s.push("Xml::createProlog");
+	var $spos = $s.length;
 	var r = new Xml();
 	r.nodeType = Xml.Prolog;
 	r.setNodeValue(data);
-	return r;
+	{
+		$s.pop();
+		return r;
+	}
+	$s.pop();
 }
 Xml.createDocument = function() {
+	$s.push("Xml::createDocument");
+	var $spos = $s.length;
 	var r = new Xml();
 	r.nodeType = Xml.Document;
 	r._children = new Array();
-	return r;
+	{
+		$s.pop();
+		return r;
+	}
+	$s.pop();
 }
 Xml.prototype._attributes = null;
 Xml.prototype._children = null;
@@ -554,146 +975,325 @@ Xml.prototype._nodeName = null;
 Xml.prototype._nodeValue = null;
 Xml.prototype._parent = null;
 Xml.prototype.addChild = function(x) {
+	$s.push("Xml::addChild");
+	var $spos = $s.length;
 	if(this._children == null) throw "bad nodetype";
 	if(x._parent != null) x._parent._children.remove(x);
 	x._parent = this;
 	this._children.push(x);
+	$s.pop();
 }
 Xml.prototype.attributes = function() {
+	$s.push("Xml::attributes");
+	var $spos = $s.length;
 	if(this.nodeType != Xml.Element) throw "bad nodeType";
-	return this._attributes.keys();
+	{
+		var $tmp = this._attributes.keys();
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 Xml.prototype.elements = function() {
+	$s.push("Xml::elements");
+	var $spos = $s.length;
 	if(this._children == null) throw "bad nodetype";
-	return { cur : 0, x : this._children, hasNext : function() {
-		var k = this.cur;
-		var l = this.x.length;
-		while(k < l) {
-			if(this.x[k].nodeType == Xml.Element) break;
-			k += 1;
-		}
-		this.cur = k;
-		return k < l;
-	}, next : function() {
-		var k = this.cur;
-		var l = this.x.length;
-		while(k < l) {
-			var n = this.x[k];
-			k += 1;
-			if(n.nodeType == Xml.Element) {
-				this.cur = k;
-				return n;
+	{
+		var $tmp = { cur : 0, x : this._children, hasNext : function() {
+			$s.push("Xml::elements@295");
+			var $spos = $s.length;
+			var k = this.cur;
+			var l = this.x.length;
+			while(k < l) {
+				if(this.x[k].nodeType == Xml.Element) break;
+				k += 1;
 			}
-		}
-		return null;
-	}}
+			this.cur = k;
+			{
+				var $tmp = k < l;
+				$s.pop();
+				return $tmp;
+			}
+			$s.pop();
+		}, next : function() {
+			$s.push("Xml::elements@306");
+			var $spos = $s.length;
+			var k = this.cur;
+			var l = this.x.length;
+			while(k < l) {
+				var n = this.x[k];
+				k += 1;
+				if(n.nodeType == Xml.Element) {
+					this.cur = k;
+					{
+						$s.pop();
+						return n;
+					}
+				}
+			}
+			{
+				$s.pop();
+				return null;
+			}
+			$s.pop();
+		}}
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 Xml.prototype.elementsNamed = function(name) {
+	$s.push("Xml::elementsNamed");
+	var $spos = $s.length;
 	if(this._children == null) throw "bad nodetype";
-	return { cur : 0, x : this._children, hasNext : function() {
-		var k = this.cur;
-		var l = this.x.length;
-		while(k < l) {
-			var n = this.x[k];
-			if(n.nodeType == Xml.Element && n._nodeName == name) break;
-			k++;
-		}
-		this.cur = k;
-		return k < l;
-	}, next : function() {
-		var k = this.cur;
-		var l = this.x.length;
-		while(k < l) {
-			var n = this.x[k];
-			k++;
-			if(n.nodeType == Xml.Element && n._nodeName == name) {
-				this.cur = k;
-				return n;
+	{
+		var $tmp = { cur : 0, x : this._children, hasNext : function() {
+			$s.push("Xml::elementsNamed@327");
+			var $spos = $s.length;
+			var k = this.cur;
+			var l = this.x.length;
+			while(k < l) {
+				var n = this.x[k];
+				if(n.nodeType == Xml.Element && n._nodeName == name) break;
+				k++;
 			}
-		}
-		return null;
-	}}
+			this.cur = k;
+			{
+				var $tmp = k < l;
+				$s.pop();
+				return $tmp;
+			}
+			$s.pop();
+		}, next : function() {
+			$s.push("Xml::elementsNamed@339");
+			var $spos = $s.length;
+			var k = this.cur;
+			var l = this.x.length;
+			while(k < l) {
+				var n = this.x[k];
+				k++;
+				if(n.nodeType == Xml.Element && n._nodeName == name) {
+					this.cur = k;
+					{
+						$s.pop();
+						return n;
+					}
+				}
+			}
+			{
+				$s.pop();
+				return null;
+			}
+			$s.pop();
+		}}
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 Xml.prototype.exists = function(att) {
+	$s.push("Xml::exists");
+	var $spos = $s.length;
 	if(this.nodeType != Xml.Element) throw "bad nodeType";
-	return this._attributes.exists(att);
+	{
+		var $tmp = this._attributes.exists(att);
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 Xml.prototype.firstChild = function() {
+	$s.push("Xml::firstChild");
+	var $spos = $s.length;
 	if(this._children == null) throw "bad nodetype";
-	return this._children[0];
+	{
+		var $tmp = this._children[0];
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 Xml.prototype.firstElement = function() {
+	$s.push("Xml::firstElement");
+	var $spos = $s.length;
 	if(this._children == null) throw "bad nodetype";
 	var cur = 0;
 	var l = this._children.length;
 	while(cur < l) {
 		var n = this._children[cur];
-		if(n.nodeType == Xml.Element) return n;
+		if(n.nodeType == Xml.Element) {
+			$s.pop();
+			return n;
+		}
 		cur++;
 	}
-	return null;
+	{
+		$s.pop();
+		return null;
+	}
+	$s.pop();
 }
 Xml.prototype.get = function(att) {
+	$s.push("Xml::get");
+	var $spos = $s.length;
 	if(this.nodeType != Xml.Element) throw "bad nodeType";
-	return this._attributes.get(att);
+	{
+		var $tmp = this._attributes.get(att);
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 Xml.prototype.getNodeName = function() {
+	$s.push("Xml::getNodeName");
+	var $spos = $s.length;
 	if(this.nodeType != Xml.Element) throw "bad nodeType";
-	return this._nodeName;
+	{
+		var $tmp = this._nodeName;
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 Xml.prototype.getNodeValue = function() {
+	$s.push("Xml::getNodeValue");
+	var $spos = $s.length;
 	if(this.nodeType == Xml.Element || this.nodeType == Xml.Document) throw "bad nodeType";
-	return this._nodeValue;
+	{
+		var $tmp = this._nodeValue;
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 Xml.prototype.getParent = function() {
-	return this._parent;
+	$s.push("Xml::getParent");
+	var $spos = $s.length;
+	{
+		var $tmp = this._parent;
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 Xml.prototype.insertChild = function(x,pos) {
+	$s.push("Xml::insertChild");
+	var $spos = $s.length;
 	if(this._children == null) throw "bad nodetype";
 	if(x._parent != null) x._parent._children.remove(x);
 	x._parent = this;
 	this._children.insert(pos,x);
+	$s.pop();
 }
 Xml.prototype.iterator = function() {
+	$s.push("Xml::iterator");
+	var $spos = $s.length;
 	if(this._children == null) throw "bad nodetype";
-	return { cur : 0, x : this._children, hasNext : function() {
-		return this.cur < this.x.length;
-	}, next : function() {
-		return this.x[this.cur++];
-	}}
+	{
+		var $tmp = { cur : 0, x : this._children, hasNext : function() {
+			$s.push("Xml::iterator@281");
+			var $spos = $s.length;
+			{
+				var $tmp = this.cur < this.x.length;
+				$s.pop();
+				return $tmp;
+			}
+			$s.pop();
+		}, next : function() {
+			$s.push("Xml::iterator@284");
+			var $spos = $s.length;
+			{
+				var $tmp = this.x[this.cur++];
+				$s.pop();
+				return $tmp;
+			}
+			$s.pop();
+		}}
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 Xml.prototype.nodeName = null;
 Xml.prototype.nodeType = null;
 Xml.prototype.nodeValue = null;
 Xml.prototype.parent = null;
 Xml.prototype.remove = function(att) {
+	$s.push("Xml::remove");
+	var $spos = $s.length;
 	if(this.nodeType != Xml.Element) throw "bad nodeType";
 	this._attributes.remove(att);
+	$s.pop();
 }
 Xml.prototype.removeChild = function(x) {
+	$s.push("Xml::removeChild");
+	var $spos = $s.length;
 	if(this._children == null) throw "bad nodetype";
 	var b = this._children.remove(x);
 	if(b) x._parent = null;
-	return b;
+	{
+		$s.pop();
+		return b;
+	}
+	$s.pop();
 }
 Xml.prototype.set = function(att,value) {
+	$s.push("Xml::set");
+	var $spos = $s.length;
 	if(this.nodeType != Xml.Element) throw "bad nodeType";
 	this._attributes.set(att,value);
+	$s.pop();
 }
 Xml.prototype.setNodeName = function(n) {
+	$s.push("Xml::setNodeName");
+	var $spos = $s.length;
 	if(this.nodeType != Xml.Element) throw "bad nodeType";
-	return this._nodeName = n;
+	{
+		var $tmp = this._nodeName = n;
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 Xml.prototype.setNodeValue = function(v) {
+	$s.push("Xml::setNodeValue");
+	var $spos = $s.length;
 	if(this.nodeType == Xml.Element || this.nodeType == Xml.Document) throw "bad nodeType";
-	return this._nodeValue = v;
+	{
+		var $tmp = this._nodeValue = v;
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 Xml.prototype.toString = function() {
-	if(this.nodeType == Xml.PCData) return this._nodeValue;
-	if(this.nodeType == Xml.CData) return ("<![CDATA[" + this._nodeValue) + "]]>";
-	if(this.nodeType == Xml.Comment) return ("<!--" + this._nodeValue) + "-->";
-	if(this.nodeType == Xml.DocType) return ("<!DOCTYPE " + this._nodeValue) + ">";
-	if(this.nodeType == Xml.Prolog) return ("<?" + this._nodeValue) + "?>";
+	$s.push("Xml::toString");
+	var $spos = $s.length;
+	if(this.nodeType == Xml.PCData) {
+		var $tmp = this._nodeValue;
+		$s.pop();
+		return $tmp;
+	}
+	if(this.nodeType == Xml.CData) {
+		var $tmp = ("<![CDATA[" + this._nodeValue) + "]]>";
+		$s.pop();
+		return $tmp;
+	}
+	if(this.nodeType == Xml.Comment) {
+		var $tmp = ("<!--" + this._nodeValue) + "-->";
+		$s.pop();
+		return $tmp;
+	}
+	if(this.nodeType == Xml.DocType) {
+		var $tmp = ("<!DOCTYPE " + this._nodeValue) + ">";
+		$s.pop();
+		return $tmp;
+	}
+	if(this.nodeType == Xml.Prolog) {
+		var $tmp = ("<?" + this._nodeValue) + "?>";
+		$s.pop();
+		return $tmp;
+	}
 	var s = new StringBuf();
 	if(this.nodeType == Xml.Element) {
 		s.b[s.b.length] = "<";
@@ -710,7 +1310,11 @@ Xml.prototype.toString = function() {
 		}}
 		if(this._children.length == 0) {
 			s.b[s.b.length] = "/>";
-			return s.b.join("");
+			{
+				var $tmp = s.b.join("");
+				$s.pop();
+				return $tmp;
+			}
 		}
 		s.b[s.b.length] = ">";
 	}
@@ -723,83 +1327,188 @@ Xml.prototype.toString = function() {
 		s.b[s.b.length] = this._nodeName;
 		s.b[s.b.length] = ">";
 	}
-	return s.b.join("");
+	{
+		var $tmp = s.b.join("");
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 Xml.prototype.__class__ = Xml;
 StringBuf = function(p) { if( p === $_ ) return; {
+	$s.push("StringBuf::new");
+	var $spos = $s.length;
 	this.b = new Array();
+	$s.pop();
 }}
 StringBuf.__name__ = ["StringBuf"];
 StringBuf.prototype.add = function(x) {
+	$s.push("StringBuf::add");
+	var $spos = $s.length;
 	this.b[this.b.length] = x;
+	$s.pop();
 }
 StringBuf.prototype.addChar = function(c) {
+	$s.push("StringBuf::addChar");
+	var $spos = $s.length;
 	this.b[this.b.length] = String.fromCharCode(c);
+	$s.pop();
 }
 StringBuf.prototype.addSub = function(s,pos,len) {
+	$s.push("StringBuf::addSub");
+	var $spos = $s.length;
 	this.b[this.b.length] = s.substr(pos,len);
+	$s.pop();
 }
 StringBuf.prototype.b = null;
 StringBuf.prototype.toString = function() {
-	return this.b.join("");
+	$s.push("StringBuf::toString");
+	var $spos = $s.length;
+	{
+		var $tmp = this.b.join("");
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 StringBuf.prototype.__class__ = StringBuf;
+if(typeof haxe=='undefined') haxe = {}
+haxe.Log = function() { }
+haxe.Log.__name__ = ["haxe","Log"];
+haxe.Log.trace = function(v,infos) {
+	$s.push("haxe.Log::trace");
+	var $spos = $s.length;
+	js.Boot.__trace(v,infos);
+	$s.pop();
+}
+haxe.Log.clear = function() {
+	$s.push("haxe.Log::clear");
+	var $spos = $s.length;
+	js.Boot.__clear_trace();
+	$s.pop();
+}
+haxe.Log.prototype.__class__ = haxe.Log;
 Hash = function(p) { if( p === $_ ) return; {
+	$s.push("Hash::new");
+	var $spos = $s.length;
 	this.h = {}
 	if(this.h.__proto__ != null) {
 		this.h.__proto__ = null;
 		delete(this.h.__proto__);
 	}
 	else null;
+	$s.pop();
 }}
 Hash.__name__ = ["Hash"];
 Hash.prototype.exists = function(key) {
+	$s.push("Hash::exists");
+	var $spos = $s.length;
 	try {
 		key = "$" + key;
-		return this.hasOwnProperty.call(this.h,key);
+		{
+			var $tmp = this.hasOwnProperty.call(this.h,key);
+			$s.pop();
+			return $tmp;
+		}
 	}
 	catch( $e0 ) {
 		{
 			var e = $e0;
 			{
+				$e = [];
+				while($s.length >= $spos) $e.unshift($s.pop());
+				$s.push($e[0]);
 				
 				for(var i in this.h)
 					if( i == key ) return true;
 			;
-				return false;
+				{
+					$s.pop();
+					return false;
+				}
 			}
 		}
 	}
+	$s.pop();
 }
 Hash.prototype.get = function(key) {
-	return this.h["$" + key];
+	$s.push("Hash::get");
+	var $spos = $s.length;
+	{
+		var $tmp = this.h["$" + key];
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 Hash.prototype.h = null;
 Hash.prototype.iterator = function() {
-	return { ref : this.h, it : this.keys(), hasNext : function() {
-		return this.it.hasNext();
-	}, next : function() {
-		var i = this.it.next();
-		return this.ref["$" + i];
-	}}
+	$s.push("Hash::iterator");
+	var $spos = $s.length;
+	{
+		var $tmp = { ref : this.h, it : this.keys(), hasNext : function() {
+			$s.push("Hash::iterator@81");
+			var $spos = $s.length;
+			{
+				var $tmp = this.it.hasNext();
+				$s.pop();
+				return $tmp;
+			}
+			$s.pop();
+		}, next : function() {
+			$s.push("Hash::iterator@82");
+			var $spos = $s.length;
+			var i = this.it.next();
+			{
+				var $tmp = this.ref["$" + i];
+				$s.pop();
+				return $tmp;
+			}
+			$s.pop();
+		}}
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 Hash.prototype.keys = function() {
+	$s.push("Hash::keys");
+	var $spos = $s.length;
 	var a = new Array();
 	
 			for(var i in this.h)
 				a.push(i.substr(1));
 		;
-	return a.iterator();
+	{
+		var $tmp = a.iterator();
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 Hash.prototype.remove = function(key) {
-	if(!this.exists(key)) return false;
+	$s.push("Hash::remove");
+	var $spos = $s.length;
+	if(!this.exists(key)) {
+		$s.pop();
+		return false;
+	}
 	delete(this.h["$" + key]);
-	return true;
+	{
+		$s.pop();
+		return true;
+	}
+	$s.pop();
 }
 Hash.prototype.set = function(key,value) {
+	$s.push("Hash::set");
+	var $spos = $s.length;
 	this.h["$" + key] = value;
+	$s.pop();
 }
 Hash.prototype.toString = function() {
+	$s.push("Hash::toString");
+	var $spos = $s.length;
 	var s = new StringBuf();
 	s.b[s.b.length] = "{";
 	var it = this.keys();
@@ -813,41 +1522,112 @@ Hash.prototype.toString = function() {
 	}
 	}}
 	s.b[s.b.length] = "}";
-	return s.b.join("");
+	{
+		var $tmp = s.b.join("");
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 Hash.prototype.__class__ = Hash;
 Std = function() { }
 Std.__name__ = ["Std"];
 Std["is"] = function(v,t) {
-	return js.Boot.__instanceof(v,t);
+	$s.push("Std::is");
+	var $spos = $s.length;
+	{
+		var $tmp = js.Boot.__instanceof(v,t);
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 Std.string = function(s) {
-	return js.Boot.__string_rec(s,"");
+	$s.push("Std::string");
+	var $spos = $s.length;
+	{
+		var $tmp = js.Boot.__string_rec(s,"");
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 Std["int"] = function(x) {
-	if(x < 0) return Math.ceil(x);
-	return Math.floor(x);
+	$s.push("Std::int");
+	var $spos = $s.length;
+	if(x < 0) {
+		var $tmp = Math.ceil(x);
+		$s.pop();
+		return $tmp;
+	}
+	{
+		var $tmp = Math.floor(x);
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 Std.parseInt = function(x) {
+	$s.push("Std::parseInt");
+	var $spos = $s.length;
 	var v = parseInt(x);
-	if(Math.isNaN(v)) return null;
-	return v;
+	if(Math.isNaN(v)) {
+		$s.pop();
+		return null;
+	}
+	{
+		var $tmp = v;
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 Std.parseFloat = function(x) {
-	return parseFloat(x);
+	$s.push("Std::parseFloat");
+	var $spos = $s.length;
+	{
+		var $tmp = parseFloat(x);
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 Std.random = function(x) {
-	return Math.floor(Math.random() * x);
+	$s.push("Std::random");
+	var $spos = $s.length;
+	{
+		var $tmp = Math.floor(Math.random() * x);
+		$s.pop();
+		return $tmp;
+	}
+	$s.pop();
 }
 Std.prototype.__class__ = Std;
 Main = function(p) { if( p === $_ ) return; {
-	var a = Titanium.UI.createMatrix2D(null);
-	var b = Titanium.UI.iPhone.MODAL_PRESENTATION_CURRENT_CONTEXT;
-	var win = Titanium.UI.createWindow(null);
+	$s.push("Main::new");
+	var $spos = $s.length;
+	Titanium.UI.setBackgroundColor("#000");
+	var tabGroup = Titanium.UI.createTabGroup(null);
+	var win1 = Titanium.UI.createWindow({ title : "Tab 1", backgroundColor : "#fff"});
+	var tab1 = Titanium.UI.createTab({ icon : "KS_nav_views.png", title : "Tab 1", window : win1});
+	var label1 = Titanium.UI.createLabel({ color : "#999", text : "I am a Haxe Window 1", font : { fontSize : 20, fontFamily : "Helvetica Neue"}, textAlign : "center", width : "auto"});
+	win1.add(label1);
+	var win2 = Titanium.UI.createWindow({ title : "Tab 2", backgroundColor : "#fff"});
+	var tab2 = Titanium.UI.createTab({ icon : "KS_nav_ui.png", title : "Tab 2", window : win2});
+	var label2 = Titanium.UI.createLabel({ color : "#999", text : "I am a Haxe Window 2", font : { fontSize : 20, fontFamily : "Helvetica Neue"}, textAlign : "center", width : "auto"});
+	win2.add(label2);
+	tabGroup.addTab(tab1);
+	tabGroup.addTab(tab2);
+	tabGroup.open();
+	haxe.Log.trace("Log from Haxe trace",{ fileName : "Main.hx", lineNumber : 81, className : "Main", methodName : "new"});
+	$s.pop();
 }}
 Main.__name__ = ["Main"];
 Main.main = function() {
+	$s.push("Main::main");
+	var $spos = $s.length;
 	var a = new Main();
+	$s.pop();
 }
 Main.prototype.__class__ = Main;
 $Main = function() { }
@@ -855,6 +1635,8 @@ $Main.__name__ = ["@Main"];
 $Main.prototype.__class__ = $Main;
 $_ = {}
 js.Boot.__res = {}
+$s = [];
+$e = [];
 js.Boot.__init();
 {
 	Math.__name__ = ["Math"];
@@ -862,10 +1644,24 @@ js.Boot.__init();
 	Math.NEGATIVE_INFINITY = Number["NEGATIVE_INFINITY"];
 	Math.POSITIVE_INFINITY = Number["POSITIVE_INFINITY"];
 	Math.isFinite = function(i) {
-		return isFinite(i);
+		$s.push("@Main::new@69");
+		var $spos = $s.length;
+		{
+			var $tmp = isFinite(i);
+			$s.pop();
+			return $tmp;
+		}
+		$s.pop();
 	}
 	Math.isNaN = function(i) {
-		return isNaN(i);
+		$s.push("@Main::new@81");
+		var $spos = $s.length;
+		{
+			var $tmp = isNaN(i);
+			$s.pop();
+			return $tmp;
+		}
+		$s.pop();
 	}
 }
 {
@@ -894,14 +1690,29 @@ js.Boot.__init();
 {
 	var d = Date;
 	d.now = function() {
-		return new Date();
+		$s.push("@Main::new@117");
+		var $spos = $s.length;
+		{
+			var $tmp = new Date();
+			$s.pop();
+			return $tmp;
+		}
+		$s.pop();
 	}
 	d.fromTime = function(t) {
+		$s.push("@Main::new@120");
+		var $spos = $s.length;
 		var d1 = new Date();
 		d1["setTime"](t);
-		return d1;
+		{
+			$s.pop();
+			return d1;
+		}
+		$s.pop();
 	}
 	d.fromString = function(s) {
+		$s.push("@Main::new@129");
+		var $spos = $s.length;
 		switch(s.length) {
 		case 8:{
 			var k = s.split(":");
@@ -910,31 +1721,50 @@ js.Boot.__init();
 			d1["setUTCHours"](k[0]);
 			d1["setUTCMinutes"](k[1]);
 			d1["setUTCSeconds"](k[2]);
-			return d1;
+			{
+				$s.pop();
+				return d1;
+			}
 		}break;
 		case 10:{
 			var k = s.split("-");
-			return new Date(k[0],k[1] - 1,k[2],0,0,0);
+			{
+				var $tmp = new Date(k[0],k[1] - 1,k[2],0,0,0);
+				$s.pop();
+				return $tmp;
+			}
 		}break;
 		case 19:{
 			var k = s.split(" ");
 			var y = k[0].split("-");
 			var t = k[1].split(":");
-			return new Date(y[0],y[1] - 1,y[2],t[0],t[1],t[2]);
+			{
+				var $tmp = new Date(y[0],y[1] - 1,y[2],t[0],t[1],t[2]);
+				$s.pop();
+				return $tmp;
+			}
 		}break;
 		default:{
 			throw "Invalid date format : " + s;
 		}break;
 		}
+		$s.pop();
 	}
 	d.prototype["toString"] = function() {
+		$s.push("@Main::new@158");
+		var $spos = $s.length;
 		var date = this;
 		var m = date.getMonth() + 1;
 		var d1 = date.getDate();
 		var h = date.getHours();
 		var mi = date.getMinutes();
 		var s = date.getSeconds();
-		return (((((((((date.getFullYear() + "-") + ((m < 10?"0" + m:"" + m))) + "-") + ((d1 < 10?"0" + d1:"" + d1))) + " ") + ((h < 10?"0" + h:"" + h))) + ":") + ((mi < 10?"0" + mi:"" + mi))) + ":") + ((s < 10?"0" + s:"" + s));
+		{
+			var $tmp = (((((((((date.getFullYear() + "-") + ((m < 10?"0" + m:"" + m))) + "-") + ((d1 < 10?"0" + d1:"" + d1))) + " ") + ((h < 10?"0" + h:"" + h))) + ":") + ((mi < 10?"0" + mi:"" + mi))) + ":") + ((s < 10?"0" + s:"" + s));
+			$s.pop();
+			return $tmp;
+		}
+		$s.pop();
 	}
 	d.prototype.__class__ = d;
 	d.__name__ = ["Date"];

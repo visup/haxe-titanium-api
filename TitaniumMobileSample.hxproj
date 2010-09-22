@@ -15,8 +15,6 @@
   <classpaths>
     <class path="src" />
     <class path="lib" />
-    <class path="test" />
-    <class path="titanium" />
   </classpaths>
   <!-- Build options -->
   <build>
@@ -24,7 +22,7 @@
     <option flashStrict="False" />
     <option mainClass="Main" />
     <option forcetraces="False" />
-    <option additional="-D titanium_mobile&#xA;-D iphoneos" />
+    <option additional="" />
   </build>
   <!-- haxelib libraries -->
   <haxelib>

@@ -135,7 +135,8 @@ extern class UI
 	public static function addEventListener(name:String, eventListener:Dynamic->Void):Void;
 	public static function fireEvent(name:String, event:Dynamic):Void;
 	public static function removeEventListener(name:String, eventListener:Dynamic->Void):Void;
-
+	
+	public static function setBackgroundColor(color:String):Void;
 	public static function createMatrix2D(?params:Dynamic):Matrix2D;
 	public static function createMatrix3D(?params:Dynamic):Matrix3D;
 	public static function createActivityIndicator(?params:Dynamic):ActivityIndicator;
