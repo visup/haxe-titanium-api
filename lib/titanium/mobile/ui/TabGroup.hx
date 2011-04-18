@@ -8,6 +8,79 @@ TabGroup class
 
 Documentation available at:
 http://developer.appcelerator.com/apidoc/mobile/latest/Titanium.UI.TabGroup-object.html
+
+- namespace
+
+Titanium.UI.TabGroup
+
+- type
+
+object
+
+- subtype
+
+view
+
+
+- description
+
+The Tab Group allows you to manage a tabbed UI of one or more windows. The Tab Group is created by the method `Titanium.UI.createTabGroup`.
+
+- since
+
+0.9
+
+- platforms
+
+android, iphone, ipad
+
+- properties
+
+tabs[array]: array of tab objects that are managed by the tab group
+activeTab[object]: the active tab
+barColor[string]: the default navigation bar color (typically for the "More" tab)
+allowUserCustomization[boolean]: whether or not the user can configure the tab group via the 'More' tab's edit functionality.  iPhone/iPad only
+editButtonTitle[string]: the title for the 'More' tab edit button.  iPhone/iPad only
+
+- methods
+
+addTab: add a tab to the tab group
+removeTab: remove a tab from the tab group
+open: open the tab group and make it visible
+close: close the tab group and remove it from the UI
+setActiveTab: select the currently active tab in a tab group
+
+- method : setActiveTab
+
+indexOrObject[object]: an int representing the desired tab index or a reference to the tab object you'd like to switch to
+
+- events
+
+open: fired when the tab group is opened
+close: fired when the tab group is closed
+blur: fired when the tab group loses focus
+focus: fired when the tab group gains focus
+
+- event : blur
+
+previousTab: the previous tab object
+previousIndex: the previous tab index
+tab: the tab object
+index: the tab index
+
+
+- event : focus
+
+previousTab: the previous tab object
+previousIndex: the previous tab index
+tab: the tab object
+index: the tab index
+
+
+- notes
+
+Note that when opening a tab group, if one or more of its tabs have been set 'active' prior to opening, or if setActiveTab() has been called while a tab is 'active', the result of which tab is initially selected is undefined.
+
 **/
 
 

@@ -7,6 +7,47 @@ Gestures class
 
 Documentation available at:
 http://developer.appcelerator.com/apidoc/mobile/latest/Titanium.Gesture-module
+
+- namespace
+
+Titanium.Gesture
+
+- type
+
+module
+
+- returns
+
+object
+
+- description
+
+The top level Gestures module.  The Gesture module is responsible for high level device gestures that are device-wide.
+
+- since
+
+0.8
+
+- platforms
+
+android, iphone, ipad
+
+
+- events
+
+shake: fired when the device is shaken
+orientationchange: fired when the device orientation changes
+
+
+- event : shake
+
+timestamp: timestamp reference since previous shake
+
+- event : orientationchange
+
+orientation: the orientation constant
+
+
 **/
 
 typedef TiOrientationChangeEvent = 
@@ -20,7 +61,7 @@ typedef TiShakeEvent =
 }
 
 @:native("Titanium.Gesture")
-extern class TiGesture
+extern class Gesture
 {
 	// events
 	public static inline var ORIENTATION_CHANGE_EVENT = "orientationchange";

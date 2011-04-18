@@ -7,6 +7,32 @@ UI.iOS class
 
 Documentation available at:
 http://developer.appcelerator.com/apidoc/mobile/latest/Titanium.UI.iOS-module
+
+- namespace
+
+Titanium.UI.iOS
+
+- type
+
+module
+
+- returns
+
+object
+
+- description
+
+The Apple iOS specific UI capabilities.  All properties, methods and events in this namespace will only work on the Apple iOS related devices.
+
+- since
+
+1.4
+
+- platforms
+
+iphone, ipad
+
+
 **/
 #if iphoneos
 @:native("Titanium.UI.iOS")

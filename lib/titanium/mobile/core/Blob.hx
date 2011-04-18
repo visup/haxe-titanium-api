@@ -9,5 +9,5 @@ None.
 
 extern class Blob
 {
-
+ public function toString():String;
 }
