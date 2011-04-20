@@ -1,4 +1,4 @@
-package titanium.mobile.ui;
+﻿package titanium.mobile.ui;
 import titanium.mobile.core.BaseView;
 import titanium.mobile.core.Dispatcher;
 
@@ -89,7 +89,5 @@ extern class Button extends BaseView
 	public var title:String;
 	public var color:String;
 	public var value:Dynamic;
-	// bottone che indica se è un bottone di sistema (alcuni valori: 0 -> done, 1 -> cancel, 2 -> edit, 3 -> save, 4 -> +, 5 -> space, 17 -> play)
-	// per altri tipi di system button http://developer.appcelerator.com/apidoc/mobile/latest/Titanium.UI.iPhone.SystemButton-object
 	public var systemButton:Int;
 }

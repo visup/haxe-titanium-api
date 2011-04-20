@@ -1,4 +1,4 @@
-package titanium.mobile.core;
+﻿package titanium.mobile.core;
 
 typedef TouchEvent = 
 { > Dispatcher.Event,
@@ -22,7 +22,7 @@ extern class BaseView extends Dispatcher
 	public static inline var CLICK_EVENT:String = "click";
 	public static inline var DOUBLE_CLICK_EVENT:String = "dblclick";
 	public static inline var DOUBLE_TAP_EVENT:String = "doubletap";
-    /////public static inline var TOUCH_EVENT:String = "singletap"; ////////////////////////// ???
+    	public static inline var TOUCH_EVENT:String = "singletap";
 	public static inline var SWIPE_EVENT:String = "swipe";
 	public static inline var TOUCH_CANCEL_EVENT:String = "touchcancel";
 	public static inline var TOUCH_START_EVENT:String = "touchstart";
@@ -55,7 +55,7 @@ extern class BaseView extends Dispatcher
 	public var visible:Bool;
 	public var width:Float;
 	public var zIndex:Int;
-	public var parent:Dynamic; // oggetto padre di quello corrente (es. se aggiungo un bottone in un textfield, farà riferimento al textfield padre)
+	public var parent:Dynamic;
 	
 	// methods
 	public function add(view:Dynamic):Void;

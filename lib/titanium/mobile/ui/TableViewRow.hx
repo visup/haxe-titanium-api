@@ -123,5 +123,5 @@ extern class TableViewRow extends BaseView
 	public var selectedColor:String;
 	public var selectionStyle:String;
 	public var title:String;
-	public var children:Array<Dynamic>;// aggiunta non documentata da titanium ma necessaria per prendere i figli della row
+	public var children:Array<Dynamic>;
 }

@@ -1,4 +1,4 @@
-package titanium.mobile.network;
+﻿package titanium.mobile.network;
 import titanium.mobile.core.Dispatcher;
 
 /**
@@ -123,7 +123,7 @@ extern class HTTPClient extends Dispatcher
 	public var status:Int;
 	public var timeout:Int;
 	public var validatesSecureCertificate:Bool;
-	public var requestDataType:Dynamic; // aggiunto per capire quando invio l'evento se è un EndMatch
+	public var requestDataType:Dynamic;
 	
 	// methods
 	public function abort():Void;
