@@ -121,7 +121,7 @@ extern class IPadPopover extends BaseView
 	public var rightNavButton:Dynamic;
 	public var title:String;
 	
-	// methods
+	// methods	
 	public function setWidth(width:Dynamic):Void;
 	public function setHeight(height:Dynamic):Void;
 }

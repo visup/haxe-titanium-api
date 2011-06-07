@@ -125,5 +125,6 @@ extern class EmailDialog extends Dispatcher
 	
 	// methods
 	public function addAttachment(attachment:Dynamic):Void;
+	public function isSupported():Bool;
 	public function open(props:Dynamic):Void;
 }

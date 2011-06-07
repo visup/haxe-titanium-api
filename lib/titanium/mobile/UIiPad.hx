@@ -65,6 +65,14 @@ The iPad supports the ability to embed your own fonts in your iPad application. 
 @:native("Titanium.UI.iPad")
 extern class UIiPad
 {
+	// static constants
+	public static var POPOVER_ARROW_DIRECTION_UP:Int;
+	public static var POPOVER_ARROW_DIRECTION_DOWN:Int;
+	public static var POPOVER_ARROW_DIRECTION_LEFT:Int;
+	public static var POPOVER_ARROW_DIRECTION_RIGHT:Int;
+	public static var POPOVER_ARROW_DIRECTION_ANY:Int;
+	public static var POPOVER_ARROW_DIRECTION_UNKNOWN:Int;
+
 	// static methods
 	public static function addEventListener(name:String, eventListener:Dynamic->Void):Void;
 	public static function fireEvent(name:String, event:Dynamic):Void;

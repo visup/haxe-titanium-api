@@ -118,12 +118,12 @@ extern class AudioPlayer extends Dispatcher
 	public static var STATE_PLAYING:Int;
 	public static var STATE_STARTING:Int;
 	public static var STATE_STOPPED:Int;
+	public static var STATE_STOPPING:Int;
 	public static var STATE_WAITING_FOR_DATA:Int;
 	public static var STATE_WAITING_FOR_QUEUE:Int;
 	
 	// properties
 	public var allowBackground:Bool;
-	public var audioSessionMode:Int;
 	public var bitRate:Float;
 	public var idle:Bool;
 	public var paused:Bool;

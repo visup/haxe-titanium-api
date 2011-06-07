@@ -1,4 +1,4 @@
-package titanium.mobile;
+﻿package titanium.mobile;
 import titanium.mobile.filesystem.File;
 
 /**
@@ -36,7 +36,7 @@ android, iphone, ipad
 
 createTempFile: create a temp file and return a [[Titanium.Filesystem.File]]
 createTempDirectory: create temp file and return a [[Titanium.Filesystem.File]]
-isExteralStoragePresent: returns true if the device supports external storage such as an SD card
+isExternalStoragePresent: returns true if the android device supports external storage such as an SD card. Returns false on iOS.
 getFile: return a fully formed file path as a [[Titanium.Filesystem.File]] object
 
 
@@ -44,7 +44,7 @@ getFile: return a fully formed file path as a [[Titanium.Filesystem.File]] objec
 
 - method : createTempDirectory, Titanium.Filesystem.File
 
-- method : isExteralStoragePresent, boolean
+- method : isExternalStoragePresent, boolean
 
 - method : getFile, Titanium.Filesystem.File
 
@@ -83,21 +83,22 @@ extern class Filesystem
 	public static var MODE_WRITE:Int;
 	
 	// static properties
-	public static var applicationDataDirectory(default, null):String;
-	public static var applicationDirectory(default, null):String;
-	public static var lineEnding(default, null):String;
 	public static var resourcesDirectory(default, null):String;
-	public static var separator(default, null):String;
+	public static var applicationDirectory(default, null):String;
+	public static var applicationDataDirectory(default, null):String;
 	public static var tempDirectory(default, null):String;
-	
+	public static var separator(default, null):String;
+	public static var lineEnding(default, null):String;
+
+
 	// static methods
 	public static function addEventListener(name:String, eventListener:Dynamic->Void):Void;
 	public static function fireEvent(name:String, event:Dynamic):Void;
 	public static function removeEventListener(name:String, eventListener:Dynamic->Void):Void;
 	
 	public static function createFile(?params:Dynamic):File;
-	public static function createTempDirectory():File;
 	public static function createTempFile():File;
-	public static function getFile(path:String , ?nameFile:String):File;//aggiunta per compatibilità 1.5.0
+	public static function createTempDirectory():File;
 	public static function isExteralStoragePresent():Bool;
+	public static function getFile(path:String , ?nameFile:String):File;
 }

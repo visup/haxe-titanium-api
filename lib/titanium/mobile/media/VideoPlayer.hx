@@ -264,7 +264,10 @@ typedef VideoPlayerSourceChangeEvent =
 
 typedef VideoPlayerThumbnailEvent = 
 { > Event,
-	image:Blob
+	time:Dynamic,
+	image:Blob,
+	success:Bool,
+	error:String
 }
 
 @:native("Titanium.Media.VideoPlayer")
@@ -294,6 +297,7 @@ extern class VideoPlayer extends BaseView
 	// properties
 	public var autoPlay:Bool;
 	public var duration:String;
+	public var contentURL:String;
 	public var url:String;
 	public var endPlaybackTime:Float;
 	public var fullscreen:Bool;
@@ -310,9 +314,14 @@ extern class VideoPlayer extends BaseView
 	public var scalingMode:Int;
 	public var sourceType:Int;
 	public var useApplicationAudioSession:Bool;
+	#if iphoneos
+	public var allowsAirPlay:Bool;
+	public var movieControlMode:Int;
+	#end
 	
 	// methods
 	public function play():Void;
+	public function pause():Void;
 	public function cancelAllThumbnailImageRequests():Void;
 	public function release():Void;
 	public function setBackgroundView(view:Dynamic):Void;
@@ -321,4 +330,6 @@ extern class VideoPlayer extends BaseView
 	public function setUrl(url:String):Void;
 	public function stop():Void;
 	public function thumbnailImageAtTime(time:Float, option:Int):Blob;
+
+
 }

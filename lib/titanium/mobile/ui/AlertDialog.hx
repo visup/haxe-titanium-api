@@ -105,6 +105,7 @@ extern class AlertDialog extends Dispatcher
 	public var buttonNames:Array<String>;
 	public var cancel:Int;
 	public var message:String;
+	public var messageid:String;
 	public var title:String;
 	public var showed:Bool;
 	public var interrupted:Bool;

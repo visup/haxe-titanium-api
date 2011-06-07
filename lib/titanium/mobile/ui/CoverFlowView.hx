@@ -102,10 +102,10 @@ extern class CoverFlowView extends BaseView
 	public inline static var CHANGE_EVENT = "change";
 	
 	// properties
-	public var images:Array<String>;
+	public var images:Array<Dynamic>;
 	public var selected:Int;
 	
 	// methods
-	public function setURL(index:Int, url:String):Void;
+	public function setImage(index:Int, image:Dynamic):Void;
 }
 #end

@@ -22,7 +22,7 @@ module
 
 - description
 
-The top level Network module.  The Network module is used accessing Networking related functionality.
+The top level Network module.  The Network module is used accessing Networking related functionality, including [Titanium.Network.Socket](Titanium.Network.Socket-module.html)
 
 - since
 
@@ -36,9 +36,9 @@ android, iphone, ipad
 - methods
 
 createHTTPClient : returns an HttpClient instance
-createBonjourBrowser : returns a BonjourBrowser instance
-createBonjourService : returns a BonjourService instance
-createTCPSocket : returns a TPCPSocket instance
+createBonjourBrowser : returns a BonjourBrowser instance (iOS only)
+createBonjourService : returns a BonjourService instance (iOS only)
+createTCPSocket : returns a TPCPSocket instance (iOS only; DEPRECATED)
 registerForPushNotifications: register for push notifications with the Apple Push Notification Service. Only available on iPhone.
 encodeURIComponent: encode a URI component part using URI encoding
 decodeURIComponent: decode a URI component part using URI encoding
@@ -101,6 +101,12 @@ WRITE_MODE[int]: constant value specifying write-only mode for sockets
 READ_WRITE_MODE[int]: constant value specifying read-write mode for sockets
 INADDR_ANY[string]: constant value representing the ability for sockets to listen on any locally available network device
 
+SOCKET_INITIALIZED[int]: constant value representing a socket in the INITIALIZED state
+SOCKET_CONNECTED[int]: constant value representing a socket in the CONNECTED state
+SOCKET_LISTENING[int]: constant value representing a socket in the LISTENING state
+SOCKET_CLOSED[int]: constant value representing a socket in the CLOSED state
+SOCKET_ERROR[int]: constant value representing a socket in the ERROR state
+
 online[boolean]: readonly boolean value that indicates if the network is reachable to the Internet either via WIFI or Carrier network
 networkTypeName[string]: the network type name constant. Returns one of `NONE`, `WIFI`, `LAN` or `MOBILE`.
 networkType[int]: the network type value as a constant.
@@ -145,11 +151,14 @@ extern class Network
 	public static var READ_MODE:Int;
 	public static var READ_WRITE_MODE:Int;
 	public static var WRITE_MODE:Int;
-	#if iphoneos
 	public static var NOTIFICATION_TYPE_ALERT:Int;
 	public static var NOTIFICATION_TYPE_BADGE:Int;
 	public static var NOTIFICATION_TYPE_SOUND:Int;
-	#end
+	public static var SOCKET_INITIALIZED:Int;
+	public static var SOCKET_CONNECTED:Int;
+	public static var SOCKET_LISTENING:Int;
+	public static var SOCKET_CLOSED:Int;
+	public static var SOCKET_ERROR:Int;
 	
 	// properties
 	public static var networkType:Int;
@@ -166,13 +175,15 @@ extern class Network
 	public static function fireEvent(name:String, event:Dynamic):Void;
 	public static function removeEventListener(name:String, eventListener:Dynamic->Void):Void;
 	
+	public static function addConnectivityListener(callBack:Dynamic->Void):Void;
+	public static function removeConnectivityListener(callBack:Dynamic->Void):Void;
 	public static function createHTTPClient(?params:Dynamic):HTTPClient;
-	public static function createTCPSocket(hostName:String, port:Int, mode:Int, ?params:Dynamic):TCPSocket;
 	public static function decodeURIComponent(value:String):String;
 	public static function encodeURIComponent(value:String):String;
 	#if iphoneos
 	public static function createBonjourBrowser(serviceType:String, domain:String, ?params:Dynamic):BonjourBrowser;
 	public static function createBonjourService(name:String, type:String, domain:String, ?params:Dynamic):BonjourService;
 	public static function registerForPushNotifications(config:Dynamic):Void;
+	public static function createTCPSocket(hostName:String, port:Int, mode:Int, ?params:Dynamic):TCPSocket;
 	#end
 }

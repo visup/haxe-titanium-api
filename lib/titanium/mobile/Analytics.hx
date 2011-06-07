@@ -98,9 +98,9 @@ extern class Analytics
 	public static function removeEventListener(name:String, eventListener:Dynamic->Void):Void;
 
 	public static function addEvent(type:String, name:String, data:Dynamic):Void;
-	public static function featureEvent(name:String, data:Dynamic):Void;
 	public static function navEvent(from:String, to:String, name:String, data:Dynamic):Void;
-	public static function settingsEvent(name:String, data:Dynamic):Void;
 	public static function timedEvent(name:String, start:Date, stop:Date, duration:Float, data:Dynamic):Void;
+	public static function featureEvent(name:String, data:Dynamic):Void;
+	public static function settingsEvent(name:String, data:Dynamic):Void;
 	public static function userEvent(name:String, data:Dynamic):Void;
 }

@@ -105,4 +105,10 @@ extern class Label extends BaseView
 	public var text:String;
 	public var textAlign:Dynamic;
 	public var value:Dynamic;
+	#if androidos
+	public var html:String;
+	public var autoLink:Int;
+	public var wordWrap:Bool;
+	public var ellipsize:Bool;
+	#end
 }

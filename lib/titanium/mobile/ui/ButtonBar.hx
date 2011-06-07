@@ -87,5 +87,6 @@ extern class ButtonBar extends BaseView
 	// properties
 	public var index:Int;
 	public var labels:Array<Dynamic>;
+	public var style:Int;
 }
 #end

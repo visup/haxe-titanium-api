@@ -41,6 +41,7 @@ activeTab[object]: the active tab
 barColor[string]: the default navigation bar color (typically for the "More" tab)
 allowUserCustomization[boolean]: whether or not the user can configure the tab group via the 'More' tab's edit functionality.  iPhone/iPad only
 editButtonTitle[string]: the title for the 'More' tab edit button.  iPhone/iPad only
+windowSoftInputMode[int]: One of Ti.UI.Android.SOFT_INPUT_ADJUST_PAN, Ti.UI.Android.SOFT_INPUT_ADJUST_RESIZE, or Ti.UI.Android.SOFT_INPUT_ADJUST_UNSPECIFIED. Note: MUST be passed in the creation options. (Android Only) [Android Doc: Window.setSoftInputMode](http://developer.android.com/reference/android/view/Window.html#setSoftInputMode(int))
 
 - methods
 
@@ -80,6 +81,7 @@ index: the tab index
 - notes
 
 Note that when opening a tab group, if one or more of its tabs have been set 'active' prior to opening, or if setActiveTab() has been called while a tab is 'active', the result of which tab is initially selected is undefined.
+
 
 **/
 
@@ -123,11 +125,16 @@ extern class TabGroup extends BaseView
 	
 	// properties
 	public var activeTab:Tab;
+	#if iphoneos
 	public var allowUserCustomization:Bool;
+	#end
 	public var barColor:String;
 	public var editButtonTitle:String;
 	public var tabs:Array<Tab>;
-	
+	#if androidos
+	public var windowSoftInputMode:Int;
+	#end
+
 	// methods
 	public function addTab(tab:Tab):Void;
 	public function removeTab(tab:Tab):Void;

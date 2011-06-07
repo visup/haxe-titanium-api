@@ -55,7 +55,7 @@ deleteFile: delete the file
 move: move the file to another path 
 rename: rename the file
 read: return the contents of file as blob
-write: write the contents to file
+write: write the contents to file.
 extension: return the file extension
 getParent: return the file parent
 name: the name of the file
@@ -94,6 +94,7 @@ recursive[boolean]: pass true to recursively delete any contents. defaults to fa
 - method : write, boolean
 
 contents[string|object]: write the contents of string, blob or [[Titanium.Filesystem.File]] to file
+append[boolean]: (optional) append the string to the end of the file.
 
 
 **/
@@ -106,29 +107,29 @@ extern class File extends Dispatcher
 		return titanium.mobile.Filesystem.createFile(params)
 		
 	// methods
-	public function createDirectory():Bool;
-	public function createFile():Bool;
-	public function createTimestamp():Int;
-	public function deleteFile():Bool;
-	public function deleteDirectory(?recursive:Bool):Bool;
-	public function executable():Bool;
-	public function exists():Bool;
-	public function extension():String;
-	public function getDirectoryListing():Array<String>;
-	public function getParent():File;
-	public function hidden():Bool;
-	public function modificationTimestamp():Int;
-	public function move(newPath:Dynamic):Bool;
-	public function name():String;
 	public function nativePath():String;
-	public function read():Blob;
+	public function exists():Bool;
 	public function readonly():Bool;
-	public function rename(newName:String):Bool;
+	public function symbolicLink():Bool;
+	public function writeable():Bool;
+	public function executable():Bool;
+	public function hidden():Bool;
+	public function setReadonly():Void;
 	public function setExecutable():Void;
 	public function setHidden():Void;
-	public function setReadonly():Void;
+	public function createTimestamp():Int;
+	public function modificationTimestamp():Int;
+	public function getDirectoryListing():Array<String>;
 	public function spaceAvailable():Bool;
-	public function symbolicLink():Bool;
-	public function write(contents:Dynamic):Bool;
-	public function writeable():Bool;
+	public function createDirectory():Bool;
+	public function createFile():Bool;
+	public function deleteDirectory(recursive:Bool):Bool;
+	public function deleteFile():Bool;
+	public function move(newPath:Dynamic):Bool;
+	public function rename(newName:String):Bool;
+	public function read():Blob;
+	public function write(contents:Dynamic, ?append:Bool):Bool;
+	public function extension():String;
+	public function getParent():File;
+	public function name():String;
 }

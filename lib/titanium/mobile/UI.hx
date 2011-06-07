@@ -199,6 +199,14 @@ extern class UI
 	public static var ANIMATION_CURVE_EASE_IN_OUT:Int;
 	public static var ANIMATION_CURVE_EASE_OUT:Int;
 	public static var ANIMATION_CURVE_LINEAR:Int;
+	#if iphoneos
+	public static var AUTODETECT_NONE:Int;
+	public static var AUTODETECT_ALL:Int;
+	public static var AUTODETECT_PHONE:Int;
+	public static var AUTODETECT_LINK:Int;
+	public static var AUTODETECT_ADDRESS:Int;
+	public static var AUTODETECT_CALENDAR:Int;
+	#end
 	public static var BLEND_MODE_CLEAR:Int;
 	public static var BLEND_MODE_COLOR:Int;
 	public static var BLEND_MODE_COLOR_BURN:Int;
@@ -219,6 +227,7 @@ extern class UI
 	public static var BLEND_MODE_NORMAL:Int;
 	public static var BLEND_MODE_OVERLAY:Int;
 	public static var BLEND_MODE_PLUS_DARKER:Int;
+	public static var BLEND_MODE_PLUS_LIGHTER:Int;
 	public static var BLEND_MODE_SATURATION:Int;
 	public static var BLEND_MODE_SCREEN:Int;
 	public static var BLEND_MODE_SOFT_LIGHT:Int;
@@ -270,6 +279,7 @@ extern class UI
 	public static var RETURNKEY_YAHOO:Int;
 	public static var TEXT_ALIGNMENT_CENTER:Int;
 	public static var TEXT_ALIGNMENT_LEFT:Int;
+	public static var TEXT_ALIGNMENT_RIGHT:Int;
 	public static var TEXT_AUTOCAPITALIZATION_ALL:Int;
 	public static var TEXT_AUTOCAPITALIZATION_NONE:Int;
 	public static var TEXT_AUTOCAPITALIZATION_SENTENCES:Int;
@@ -279,6 +289,9 @@ extern class UI
 	public static var TEXT_VERTICAL_ALIGNMENT_TOP:Int;
 	public static var UNKNOWN:Int;
 	public static var UPSIDE_PORTRAIT:Int;
+
+	// static properties
+	public static var currentWindow:Window;
 	
 	// static methods
 	public static function addEventListener(name:String, eventListener:Dynamic->Void):Void;

@@ -1,0 +1,88 @@
+package titanium.mobile.network.socket;
+import titanium.mobile.IOStream;
+import titanium.mobile.core.Buffer;
+/**
+TCP class
+
+Documentation available at:
+http://developer.appcelerator.com/apidoc/mobile/1.7.0.RC1/Titanium.Network.Socket.TCP-object.html
+
+- namespace
+
+Titanium.Network.Socket.TCP
+
+- type
+
+proxy
+
+- description
+
+TCP socket that implements the `Titanium.IOStream` interface.  Created by `Titanium.Network.Socket.createTCP`
+
+- since
+
+1.7
+
+- platforms
+
+iphone, android, ipad
+
+- properties
+
+host[String]: The host to connect to or listen on. Cannot be modified when not in the INITIALIZED state. Supports both IPv4 and IPv6
+port[Number]: The port to connect to or listen on. Cannot be modified when not in the INITIALIZED state
+listenQueueSize[Number]: Max number of pending incoming connections to be allowed when listen() is called. Any incoming connections received while the max number of pending connections has been reached will be rejected.
+timeout[Number]: The timeout for connect() and all I/O write() operations. Cannot be modified when not in the INITIALIZED state
+connected[Function]: The callback to be fired after the socket enters the "connected" state. Only invoked following a successful connect() call. The callback parameter's `socket` member contains the socket that connected.
+error[Function]: The callback to be fired after the socket enters the ERROR state.  The callback parameter's `socket` member contains the erring socket, and its `error` (string) and `errorCode` (number) members contain error information.
+accepted[Function]: The callback to be fired when a listener accepts a connection.  The callback parameter's `socket` member contains the socket that is receiving the connection, and its `inbound` member contains the connecting socket.
+state[Number]: current state of the socket
+
+- methods
+
+connect: Attempts to connect the socket to its host/port. Throws exception if the socket is in a CONNECTED or LISTENING state. Throws exception if a valid host and port has not been set on the proxy. Nonblocking; connection attempts are asynchronous
+listen: Attempts to start listening on the socket's host/port. listen() call will attempt to listen on the specified host and/or port property for the socket if they are set. This function blocks execution and throws an exception on error (and sets the socket state to ERROR) but does not fire the error callback in this event. Throws exception if the socket is in a LISTENING or CONNECTED state
+accept: Tells a LISTENING socket to accept a connection request at the top of a listener's request queue when one becomes available. Takes an argument, a box object which assigns callbacks to the created socket. Note that the connected callback is not called (the socket does not "transition to" the CONNECTED state - it's created in the CONNECTED state) on the newly created socket.  The accepted callback is called when a new connection is accepted as a result of calling accept().  If the socket is already flagged to accept the next connection, the existing accept options will be update to use the newly specified options object. Throws an exception if the socket is not in a LISTENING state
+close: Closes a socket. Throws exception if the socket is not in a CONNECTED or LISTENING state. Blocking
+
+- method : connect
+
+- method : listen
+
+- method : accept
+params[Object]: parameters that contain callbacks to be set on next accepted socket. The `timeout` member specifies timeout for connect and write operations.  The `error` member specifies a callback to be invoked if an error occurs.  See the `error` property for details of the callback.
+
+- method : close
+
+**/
+
+
+@:native("Titanium.Network.Socket.TCP")
+extern class TCP implements IOStream
+{
+	// static constructor
+	public inline static function create(params:Dynamic):TCP
+		return titanium.mobile.network.Socket.createTCP(params)
+
+	// static properties
+	public var host:String;
+	public var port:Int;
+	public var listenQueueSize:Int;
+	public var timeout:Int;
+	public var connected:Dynamic;
+	public var error:Dynamic;
+	public var accepted:Dynamic;
+	public var state:Int;
+	
+	// static methods
+	public function connect():Void;
+	public function listen():Void;
+	public function accept(params:Dynamic):Void;
+	public function close():Void;
+	
+	// implemented methods
+	public function read( buffer:Buffer, ?offset:Int, ?length:Int ):Int;
+	public function write( buffer:Buffer, ?offset:Int, ?length:Int ):Int;
+	public function isWriteable():Bool;
+	public function isReadable():Bool;	
+}

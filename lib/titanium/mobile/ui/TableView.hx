@@ -215,21 +215,28 @@ typedef TableViewMoveEvent =
 	section:TableViewSection
 }
 
-#if iphoneos
 typedef TableViewScrollEvent = 
 { > Event,
+	#if iphoneos
 	contentOffset:Point,
 	contentSize:Size,
+	#end
+	#if androidos
+	firstVisibleItem:Int,
+	visibleItemCount:Int,
+	totalItemCount:Int,
+	#end
 	size:Size
 }
 
 typedef TableViewScrollEndEvent = 
 { > Event,
+	#if iphoneos
 	contentOffset:Point,
 	contentSize:Size,
+	#end
 	size:Size
 }
-#end
 
 @:native("Titanium.UI.TableView")
 extern class TableView extends BaseView
@@ -249,6 +256,9 @@ extern class TableView extends BaseView
 	
 	// properties
 	public var allowSelection:Bool;
+	#if iphoneos
+	public var allowsSelectionDuringEditing:Bool;
+	#end
 	public var data:Array<Dynamic>;
 	public var editable:Bool;
 	public var editing:Bool;
@@ -258,7 +268,7 @@ extern class TableView extends BaseView
 	public var footerView:Dynamic;
 	public var headerTitle:String;
 	public var headerView:Dynamic;
-	public var index:Int;
+	public var index:Array<Dynamic>;
 	public var minRowHeight:Float;
 	public var maxRowHeight:Float;
 	public var moving:Bool;
@@ -267,8 +277,9 @@ extern class TableView extends BaseView
 	public var search:Dynamic;
 	public var searchHidden:Bool;
 	public var separatorColor:String;
-	public var separatorStyle:Int;
 	#if iphoneos
+	public var separatorStyle:Int;
+	public var showVerticalScrollIndicator:Bool;
 	public var style:Int;
 	#end
 	

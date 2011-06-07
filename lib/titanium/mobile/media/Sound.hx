@@ -140,6 +140,7 @@ extern class Sound extends Dispatcher
 	// properties
 	public var allowBackground:Bool;
 	public var audioSessionMode:Int;
+	public var duration:Float;
 	public var looping:Bool;
 	public var paused:Bool;
 	public var playing:Bool;
@@ -150,10 +151,10 @@ extern class Sound extends Dispatcher
 	// methods
 	public function getTime():Float;
 	public function getVolume():Float;
-	public function pause():Void;
 	public function isLooping():Bool;
 	public function isPaused():Bool;
 	public function isPlaying():Bool;
+	public function pause():Void;
 	public function play():Void;
 	public function release():Void;
 	public function reset():Void;

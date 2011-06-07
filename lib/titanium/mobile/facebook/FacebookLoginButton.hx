@@ -22,7 +22,7 @@ view
 
 - description
 
-The Login Button created by `Titanium.Facebook.createLoginButton`.
+The Login Button created by `Titanium.Facebook.createLoginButton`.  This is a Facebook-themed button that does not require a click event handler or any listeners.  It "just works" and changes its label to reflect the current state of the Facebook session.  For example, if the user is already logged in, this button will show "Logout".
 
 - since
 
@@ -32,43 +32,24 @@ The Login Button created by `Titanium.Facebook.createLoginButton`.
 
 android, iphone, ipad
 
+- properties
+style[string]: set to "wide" to show a wider version of the button that displays "Connect with Facebook" instead of just "Connect".
 
-- methods
+- notes
 
-- events
-
-login: fired at session login
-logout: fired at session logout
-cancel: fired when the login is cancelled
-
-- event : login
-
-success: true if the login was successful
-error: error message if success was false
-cancel: true if the user cancelled the request by closing the dialog
-
-- event : logout
-
-success: true if the logout was successful
-error: error message if success was false
-cancel: true if the user cancelled the request by closing the dialog
+See the examples in the `Titanium.Facebook` documentation.
 
 
 **/
 
-typedef FacebookCancelEvent = 
-{ > Event,
-}
 
 @:native("Titanium.Facebook.LoginButton")
 extern class FacebookLoginButton extends BaseView
 {
 	// static constructor
-	public inline static function create(?params:Dynamic, ?addParams:Dynamic):FacebookLoginButton
-		return titanium.mobile.Facebook.createLoginButton(params, addParams)
+	public inline static function create(?parameters:Dynamic):FacebookLoginButton
+		return titanium.mobile.Facebook.createLoginButton(parameters)
 		
-	// events
-	public static inline var LOGIN_EVENT = "login";
-	public static inline var LOGOUT_EVENT = "logout";
-	public static inline var CANCEL_EVENT = "cancel";
+	// static properties
+	public static var Style:String;
 }

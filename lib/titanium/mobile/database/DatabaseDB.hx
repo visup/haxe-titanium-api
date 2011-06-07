@@ -56,7 +56,7 @@ extern class DatabaseDB
 	public var rowsAffected:Int;
 	
 	// methods
-	public function close():Void;
 	public function execute(sql:String, ?args:Array<Dynamic>):DatabaseResultSet;
+	public function close():Void;
 	public function remove():Void;
 }

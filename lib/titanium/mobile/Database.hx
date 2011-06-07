@@ -50,6 +50,11 @@ name[string]: the name of the database
 
 - properties
 
+FIELD_TYPE_STRING[int]: constant for requesting a column's value returned in string form.
+FIELD_TYPE_INT[int]: constant for requesting a column's value returned in integer form.
+FIELD_TYPE_FLOAT[int]: constant for requesting a column's value returned in float form.
+FIELD_TYPE_DOUBLE[int]: constant for requesting a column's value returned in double form.
+
 - events
 
 
@@ -59,11 +64,18 @@ name[string]: the name of the database
 @:native("Titanium.Database")
 extern class Database
 {
+	// static constants
+	public static var FIELD_TYPE_STRING:Int;
+	public static var FIELD_TYPE_INT:Int;
+	public static var FIELD_TYPE_FLOAT:Int;
+	public static var FIELD_TYPE_DOUBLE:Int;
+
+
 	// static methods
 	public static function addEventListener(name:String, eventListener:Dynamic->Void):Void;
 	public static function fireEvent(name:String, event:Dynamic):Void;
 	public static function removeEventListener(name:String, eventListener:Dynamic->Void):Void;
 	
-	public static function install(path:String, name:String):DatabaseDB;
 	public static function open(name:String):DatabaseDB;
+	public static function install(path:String, name:String):DatabaseDB;
 }

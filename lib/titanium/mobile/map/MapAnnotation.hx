@@ -43,7 +43,8 @@ leftView[object]: a left view that is displayed on the annotation
 rightView[object]: a right view that is displayed on the annotation
 
 # 1.4
-image[string]: image view for the pin instead of default image.  currently only supported in iphone
+image[string]: image view for the pin instead of default image.
+pinImage[string]: Android only. *DEPRECATED* use [[Titanium.Map.Annotation.image]] property instead.
 
 # 1.5
 titleid[string]: the key in the locale file to use for the title property
@@ -60,15 +61,19 @@ extern class MapAnnotation extends Dispatcher
 		return titanium.mobile.Map.createAnnotation(params)
 		
 	// properties
-	public var animate:Bool;
-	#if iphoneos
-	public var image:String;
-	#end
-	public var leftButton:Dynamic;
-	public var leftView:Dynamic;
-	public var pincolor:Int;
-	public var rightButton:Dynamic;
-	public var rightView:Dynamic;
 	public var title:String;
+	public var titleid:String;
 	public var subtitle:String;
+	public var subtitleid:String;
+	public var animate:Bool;
+	public var leftButton:Dynamic;
+	public var rightButton:Dynamic;
+	public var leftView:Dynamic;
+	public var rightView:Dynamic;
+	public var image:String;
+	#if androidos
+	public var pinImage:String;
+	#end
+
+
 }

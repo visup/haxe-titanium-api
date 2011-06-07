@@ -50,22 +50,23 @@ orientation: the orientation constant
 
 **/
 
-typedef TiOrientationChangeEvent = 
-{ > Event,
-	orientation:String
-}
-
 typedef TiShakeEvent =
 { > Event,
 	timestamp:Int
 }
 
+typedef TiOrientationChangeEvent = 
+{ > Event,
+	orientation:String
+}
+
+
 @:native("Titanium.Gesture")
 extern class Gesture
 {
 	// events
-	public static inline var ORIENTATION_CHANGE_EVENT = "orientationchange";
 	public static inline var SHAKE_EVENT = "shake";
+	public static inline var ORIENTATION_CHANGE_EVENT = "orientationchange";
 	
 	// static methods
 	public static function addEventListener(name:String, eventListener:Dynamic->Void):Void;

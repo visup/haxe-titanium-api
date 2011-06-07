@@ -58,6 +58,7 @@ keyboardToolbarColor[string]: the color of the keyboard toolbar
 keyboardToolbarHeight[float]: the height of the keyboard toolbar
 suppressReturn[boolean]: boolean to indicate if the return key should be suppressed during entry
 minimumFontSize[int]: the minimum size of the font when the font is sized based on the contents.  Enables font scaling to fit
+autocapitalization[int]: One of `Titanium.UI.TEXT_AUTOCAPITALIZATION_NONE`, `Titanium.UI.TEXT_AUTOCAPITALIZATION_WORDS`, `Titanium.UI.TEXT_AUTOCAPITALIZATION_SENTENCES`, or `Titanium.UI.TEXT_AUTOCAPITALIZATION_ALL` to indicate how the field should be capitalized during typing.
 
 - methods
 
@@ -159,6 +160,9 @@ extern class TextField extends BaseView
 	public static inline var RETURN_EVENT = "return";
 	
 	// properties
+	public var autocapitalization:Int;
+	public var backgroundDisabledImage:String;
+	public var borderStyle:Int;
 	public var clearButtonMode:Int;
 	public var clearOnEdit:Bool;
 	public var editable:Bool;

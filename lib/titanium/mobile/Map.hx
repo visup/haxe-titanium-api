@@ -78,12 +78,12 @@ win.add(mapview);
 extern class Map
 {
 	// static constants
+	public static var ANNOTATION_RED:Int;
 	public static var ANNOTATION_GREEN:Int;
 	public static var ANNOTATION_PURPLE:Int;
-	public static var ANNOTATION_RED:Int;
-	public static var HYBRID_TYPE:Int;
-	public static var SATELLITE_TYPE:Int;
 	public static var STANDARD_TYPE:Int;
+	public static var SATELLITE_TYPE:Int;
+	public static var HYBRID_TYPE:Int;
 	
 	// static methods
 	public static function addEventListener(name:String, eventListener:Dynamic->Void):Void;

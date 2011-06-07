@@ -62,8 +62,8 @@ extern class ContactsGroup
 	public var name:String;
 	
 	// methods
-	public function add(person:ContactsPerson):Void;
 	public function members():Array<ContactsPerson>;
-	public function remove(person:ContactsPerson):Void;
 	public function sortedMembers(sortMethod:Int):Array<ContactsPerson>;
+	public function add(person:ContactsPerson):Void;
+	public function remove(person:ContactsPerson):Void;
 }

@@ -89,6 +89,12 @@ extern class Switch extends BaseView
 	// properties
 	public var enabled:Bool;
 	public var value:Bool;
+	#if androidos
+	public var style:String;
+	public var title:String;
+	public var titleOff:String;
+	public var titleOn:String;
+	#end
 }
 
 

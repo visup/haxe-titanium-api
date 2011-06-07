@@ -49,6 +49,9 @@ image[string]: the image to display on the button to the left of the title
 # 1.5
 titleid[string]: the key in the locale file to use for the title property
 
+#
+systemButton[int]: style costants to use sytem button style (0 -> done, 1 -> cancel, 2 -> edit, 3 -> save, 4 -> +, 5 -> space, 17 -> play) http://developer.appcelerator.com/apidoc/mobile/latest/Titanium.UI.iPhone.SystemButton-object
+
 
 - methods
 
@@ -87,6 +90,7 @@ extern class Button extends BaseView
 	public var selectedColor:String;
 	public var style:Int;
 	public var title:String;
+	public var titleid:String;
 	public var color:String;
 	public var value:Dynamic;
 	public var systemButton:Int;

@@ -46,5 +46,5 @@ extern class Yahoo
 	public static function fireEvent(name:String, event:Dynamic):Void;
 	public static function removeEventListener(name:String, eventListener:Dynamic->Void):Void;
 	
-	public static function yql(yql:String, onComplete:Dynamic->Void):Void;
+	public static function yql(yql:String, callBack:Dynamic->Void):Void;
 }

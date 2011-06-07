@@ -57,7 +57,6 @@ extern class AudioRecorder extends Dispatcher
 		return titanium.mobile.Media.createAudioRecorder(params)
 		
 	// properties
-	public var audioSessionMode:Int;
 	public var compression:Int;
 	public var format:Int;
 	public var paused:Bool;

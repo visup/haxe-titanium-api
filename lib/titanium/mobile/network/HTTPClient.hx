@@ -1,5 +1,6 @@
 ﻿package titanium.mobile.network;
 import titanium.mobile.core.Dispatcher;
+import titanium.mobile.Xml;
 
 /**
 HTTPClient class
@@ -124,6 +125,9 @@ extern class HTTPClient extends Dispatcher
 	public var timeout:Int;
 	public var validatesSecureCertificate:Bool;
 	public var requestDataType:Dynamic;
+	#if iphoneos
+	public var file:String;
+	#end
 	
 	// methods
 	public function abort():Void;

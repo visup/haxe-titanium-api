@@ -96,7 +96,7 @@ win.add(scrollView);
 typedef ScrollableViewScrollEvent = 
 { > Event,
 	currentPage:Int,
-	view:Dynamic
+	view:View
 }
 
 @:native("Titanium.UI.ScrollableView")
@@ -110,14 +110,19 @@ extern class ScrollableView extends BaseView
 	public static inline var SCROLL_EVENT = "scroll";
 	
 	// properties
+	#if iphoneos
+	public var cacheSize:Int;
+	#end
 	public var currentPage:Int;
 	public var minZoomScale:Float;
 	public var maxZoomScale:Float;
 	public var pagingControlColor:String;
 	public var pagingControlHeight:Float;
 	public var showPagingControl:Bool;
-	public var views:Array<Dynamic>;
+	public var views:Array<View>;
 	
 	// methods
-	public function scrollToView(view:Dynamic):Void;
+	public function scrollToView(view:View):Void;
+	public function  addView(view:View):Void;
+	public function  removeView(view:View):Void;
 }

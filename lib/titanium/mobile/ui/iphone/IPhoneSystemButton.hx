@@ -66,7 +66,7 @@ CONTACT_ADD[int]: green style plus (+) icon
 extern class IPhoneSystemButton
 {
 	// constants
-	/*public static var ACTION:Int;
+	public static var ACTION:Int;
 	public static var CAMERA:Int;
 	public static var COMPOSE:Int;
 	public static var BOOKMARKS:Int;
@@ -86,10 +86,14 @@ extern class IPhoneSystemButton
 	public static var DONE:Int;
 	public static var FLEXIBLE_SPACE:Int;
 	public static var FIXED_SPACE:Int;
+	public static var ACTIVITY:Int;
 	public static var SPINNER:Int;
 	public static var INFO_LIGHT:Int;
-	public static var INFO_DARK:Int;*/
+	public static var INFO_DARK:Int;
 	public static var DISCLOSURE:Int;
-	//public static var CONTACT_ADD:Int;
+	public static var CONTACT_ADD:Int;
+	
+	
+
 }
 #end

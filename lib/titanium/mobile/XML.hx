@@ -43,7 +43,7 @@ node[DOMNode]: the XML DOMNode or DOMDocument to serialize
 **/
 
 @:native("Titanium.XML")
-extern class XML
+extern class Xml
 {	
 	// static methods
 	public static function addEventListener(name:String, eventListener:Dynamic->Void):Void;

@@ -126,14 +126,22 @@ extern class ImageView extends BaseView
 	// properties
 	public var animating:Bool;
 	public var canScale:Bool;
+	#if androidos
+	public var decodeRetries:Int;
+	#end
 	public var defaultImage:String;
 	public var duration:Float;
+	public var enableZoomControls:Bool;
+	#if iphoneos
+	public var hires:Bool;
+	#end
 	public var image:Dynamic;
 	public var images:Array<Dynamic>;
 	public var paused:Bool;
 	public var preventDefaultImage:Bool;
 	public var repeatCount:Int;
 	public var reverse:Bool;
+	public var url:String;
 	
 	// methods
 	public function start():Void;

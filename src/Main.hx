@@ -6,8 +6,6 @@ import titanium.mobile.ui.TabGroup;
 import titanium.mobile.ui.Tab;
 import titanium.mobile.ui.Label;
 
-import ImportAll;
-
 class Main
 {
 	public static function main()

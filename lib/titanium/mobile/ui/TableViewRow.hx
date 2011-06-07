@@ -53,6 +53,9 @@ selectionStyle[int]: a selection style constant to control the selection color. 
 selectedColor[string]: color of the row during selection
 color[string]: default color of the row when not selected
 
+#
+children[Array of Object]: Array of object add to the tableViewRow
+
 - events
 
 click: fired when the row is clicked. row events automatically propagate to the section and table view if an event listener is not added directly to the cell.

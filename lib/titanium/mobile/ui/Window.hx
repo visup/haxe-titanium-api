@@ -59,7 +59,7 @@ navBarHidden[boolean]: for modal windows, hide the nav bar (true) or show the na
 # 1.5
 titleid[string]: the key in the locale file to use for the title property
 titlepromptid[string]: the key in the locale file to use for the titlePrompt property
-softInputMode[int]: One of Ti.UI.Android.SOFT_INPUT_ADJUST_PAN, Ti.UI.Android.SOFT_INPUT_ADJUST_RESIZE, or Ti.UI.Android.SOFT_INPUT_ADJUST_UNSPECIFIED. Note: MUST be passed in the creation options. (Android Only) [Android Doc: Window.setSoftInputMode](http://developer.android.com/reference/android/view/Window.html#setSoftInputMode(int))
+windowSoftInputMode[int]: One of Ti.UI.Android.SOFT_INPUT_ADJUST_PAN, Ti.UI.Android.SOFT_INPUT_ADJUST_RESIZE, or Ti.UI.Android.SOFT_INPUT_ADJUST_UNSPECIFIED. Note: MUST be passed in the creation options. (Android Only) [Android Doc: Window.setSoftInputMode](http://developer.android.com/reference/android/view/Window.html#setSoftInputMode(int))
 
 - methods
 
@@ -274,6 +274,32 @@ typedef WindowOpenEvent =
 { > Event,
 }
 
+#if androidos
+typedef WindowAndroidBackEvent = 
+{ > Event,
+}
+
+typedef WindowAndroidCameraEvent = 
+{ > Event,
+}
+
+typedef WindowAndroidFocusEvent = 
+{ > Event,
+}
+
+typedef WindowAndroidSearchEvent = 
+{ > Event,
+}
+
+typedef WindowAndroidVolupEvent = 
+{ > Event,
+}
+
+typedef WindowAndroidVoldownEvent = 
+{ > Event,
+}
+#end
+
 @:native("Titanium.UI.Window")
 extern class Window extends BaseView
 {
@@ -282,15 +308,22 @@ extern class Window extends BaseView
 		return titanium.mobile.UI.createWindow(params)
 	
 	// events
-	public inline static var BLUR_EVENT = "	blur";
+	public inline static var BLUR_EVENT = "blur";
 	public inline static var CLOSE_EVENT = "close";
 	public inline static var FOCUS_EVENT = "focus";
 	public inline static var OPEN_EVENT = "open";
+	#if androidos
+	public inline static var ANDROID_BACK_EVENT = "android:back";
+	public inline static var ANDROID_CAMERA_EVENT = "android:camera";
+	public inline static var ANDROID_SEARCH_EVENT = "android:search";
+	public inline static var ANDROID_FOCUS_EVENT = "android:focus";
+	public inline static var ANDROID_VOLUP_EVENT = "android:volup";
+	public inline static var ANDROID_VOLDOWN_EVENT = "android:voldown";
+	#end
 	
 	// properties
-	public var backButtonTitleImage:String;
-	public var barColor:String;
-	public var barImage:String;
+
+
 	public var exitOnClose:Bool;
 	public var fullscreen:Bool;
 	public var modal:Bool;
@@ -298,17 +331,26 @@ extern class Window extends BaseView
 	public var tabBarHidden:Bool;
 	public var orientationModes:Array<Int>;
 	public var title:String;
+	public var titleid:String;
 	public var url:String;
 	#if iphoneos
+	public var backButtonTitleImage:String;
+	public var backButtonTitle:String;
+	public var barColor:String;
+	public var barImage:String;
 	public var leftNavButton:Dynamic;
 	public var rightNavButton:Dynamic;
 	public var titleControl:Dynamic;
 	public var titleImage:String;
 	public var titlePrompt:String;
+	public var titlepromptid:String;
 	public var toolbar:Array<Button>;
 	public var translucent:Bool;
 	#end
-	
+	#if androidos
+	public var windowSoftInputMode:Int;
+	#end
+
 	// methods
 	public function close(?options:Dynamic):Void;
 	public function open(?options:Dynamic):Void;

@@ -246,14 +246,15 @@ available: bool indicating availability of recording device
 
 **/
 
-typedef RecordingInputEvent = 
-{ > Event,
-	available:Bool
-}
 
 typedef VolumeEvent = 
 { > Event,
 	volume:Float
+}
+
+typedef RecordingInputEvent = 
+{ > Event,
+	available:Bool
 }
 
 @:native("Titanium.Media")
@@ -261,8 +262,8 @@ extern class Media
 {
 	// events
 	public static inline var LINE_CHANGE_EVENT = "linechange";
-	public static inline var RECORDING_INPUT_EVENT = "recordinginput";
 	public static inline var VOLUME_EVENT = "volume";
+	public static inline var RECORDING_INPUT_EVENT = "recordinginput";
 	
 	// static constants
 	public static var AUDIO_FILEFORMAT_3GP2:Int;
@@ -272,6 +273,7 @@ extern class Media
 	public static var AUDIO_FILEFORMAT_CAF:Int;
 	public static var AUDIO_FILEFORMAT_MP3:Int;
 	public static var AUDIO_FILEFORMAT_MP4:Int;
+	public static var AUDIO_FILEFORMAT_MP4A:Int;
 	public static var AUDIO_FILEFORMAT_WAVE:Int;
 	public static var AUDIO_FORMAT_AAC:Int;
 	public static var AUDIO_FORMAT_ALAW:Int;
@@ -317,6 +319,24 @@ extern class Media
 	public static var MEDIA_PLAYER_STATE_SEEK_BACKWARD:Int;
 	public static var MEDIA_PLAYER_STATE_SKEEK_FORWARD:Int;
 	public static var MEDIA_PLAYER_STATE_STOPPED:Int;
+	public static var MUSIC_PLAYER_REPEAT_ALL:Int;
+	public static var MUSIC_PLAYER_REPEAT_DEFAULT:Int;
+	public static var MUSIC_PLAYER_REPEAT_NONE:Int;
+	public static var MUSIC_PLAYER_REPEAT_ONE:Int;
+	public static var MUSIC_PLAYER_SHUFFLE_ALBUMS:Int;
+	public static var MUSIC_PLAYER_SHUFFLE_DEFAULT:Int;
+	public static var MUSIC_PLAYER_SHUFFLE_NONE:Int;
+	public static var MUSIC_PLAYER_SHUFFLE_SONGS:Int;
+	public static var MUSIC_PLAYER_STATE_INTERRUPTED:Int;
+	public static var MUSIC_PLAYER_STATE_STOPPED:Int;
+	public static var MUSIC_PLAYER_STATE_PLAYING:Int;
+	public static var MUSIC_PLAYER_STATE_PAUSED:Int;
+	public static var MUSIC_PLAYER_STATE_SKEEK_FORWARD:Int;
+	public static var MUSIC_PLAYER_STATE_SEEK_BACKWARD:Int;
+	public static var MUSIC_MEDIA_TYPE_ALL:Int;
+	public static var MUSIC_MEDIA_TYPE_AUDIOBOOK:Int;
+	public static var MUSIC_MEDIA_TYPE_MUSIC:Int;
+	public static var MUSIC_MEDIA_TYPE_PODCAST:Int;
 	public static var NO_CAMERA:Int;
 	public static var NO_VIDEO:Int;
 	public static var QUALITY_HIGH:Int;
@@ -356,7 +376,8 @@ extern class Media
 	public static var VIDEO_SOURCE_TYPE_UNKNOWN:Int;
 	public static var VIDEO_TIME_OPTION_EXACT:Int;
 	public static var VIDEO_TIME_OPTION_NEAREST_KEYFRAME:Int;
-	
+
+
 	// properties
 	#if iphoneos
 	public static var appMusicPlayer:MusicPlayer;
@@ -364,6 +385,7 @@ extern class Media
 	#end
 	public static var audioLineType:Int;
 	public static var audioPlaying:Bool;
+	public static var audioSessionMode:Int;
 	public static var availableCameraMediaTypes:Array<Int>;
 	public static var availablePhotoGalleryMediaTypes:Array<Int>;
 	public static var availablePhotoMediaTypes:Array<Int>;
@@ -378,26 +400,30 @@ extern class Media
 	public static function addEventListener(name:String, eventListener:Dynamic->Void):Void;
 	public static function fireEvent(name:String, event:Dynamic):Void;
 	public static function removeEventListener(name:String, eventListener:Dynamic->Void):Void;
-	
+
+	public static function isMediaTypeSupported(media:String, type:String):Bool;
+	public static function showCamera(options:Dynamic):Void;
+	public static function openPhotoGallery(options:Dynamic):Void;
+	public static function takeScreenshot(callBack:Dynamic->Void):Void;
+	public static function saveToPhotoGallery(media:Dynamic, callBack:Dynamic->Void):Void;	
 	public static function beep():Void;
+	public static function vibrate():Void;
+	public static function takePicture():Void;
+	public static function hideCamera():Void;
+	#if iphoneos
+	public static function showMusicLibrary(options:Dynamic):Void;
+	public static function hideMusicLibrary():Void;
+	#end
+	public static function startMicrophoneMonitor():Void;
+	public static function stopMicrophoneMonitor():Void;
+
 	public static function createAudioPlayer(params:Dynamic):AudioPlayer;
 	public static function createAudioRecorder(params:Dynamic):AudioRecorder;
 	public static function createSound(params:Dynamic):Sound;
 	public static function createVideoPlayer(params:Dynamic):VideoPlayer;
-	public static function hideCamera():Void;
-	public static function hideMusicLibrary():Void;
-	public static function isMediaTypeSupported():Bool;
-	public static function openPhotoGallery():Void;
-	public static function saveToPhotoGallery(media:Dynamic):Void;
-	public static function showCamera(options:Dynamic):Void;
-	public static function startMicrophoneMonitor():Void;
-	public static function stopMicrophoneMonitor():Void;
-	public static function takePicture():Void;
-	public static function takeScreenshot(onCapture: { media:Dynamic }->Void):Void;
-	public static function vibrate():Void;
+
 	#if iphoneos
 	public static function createMusicPlayer(params:Dynamic):MusicPlayer;
 	public static function createItem(params:Dynamic):MediaItem;
-	public static function showMusicLibrary(options:Dynamic):Void;
 	#end
 }

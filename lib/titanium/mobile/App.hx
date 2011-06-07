@@ -1,4 +1,4 @@
-package titanium.mobile;
+﻿package titanium.mobile;
 
 import titanium.mobile.core.Dispatcher;
 
@@ -94,15 +94,16 @@ extern class App
 	public static function getArguments():Dynamic;
 	
 	// static properties
-	public static var copyright:String;
-	public static var description:String;
-	public static var guid:String;
 	public static var id:String;
-	public static var idleTimerDisabled:Bool;
-	public static var name:String; // FIXME non si può usare name come identificativo
-	public static var proximityDetection:Bool;
-	public static var proximityState:Int;
-	public static var publisher:String;
 	public static var url:String;
+	public static var guid:String;
+	//public static var name:String;
 	public static var version:String;
+	public static var publisher:String;
+	public static var description:String;
+	public static var copyright:String;
+	public static var idleTimerDisabled:Bool;
+	public static var proximityState:Int;	
+	public static var proximityDetection:Bool;
+
 }

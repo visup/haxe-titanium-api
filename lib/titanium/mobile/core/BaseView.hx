@@ -22,7 +22,7 @@ extern class BaseView extends Dispatcher
 	public static inline var CLICK_EVENT:String = "click";
 	public static inline var DOUBLE_CLICK_EVENT:String = "dblclick";
 	public static inline var DOUBLE_TAP_EVENT:String = "doubletap";
-    	public static inline var TOUCH_EVENT:String = "singletap";
+    public static inline var TOUCH_EVENT:String = "singletap";
 	public static inline var SWIPE_EVENT:String = "swipe";
 	public static inline var TOUCH_CANCEL_EVENT:String = "touchcancel";
 	public static inline var TOUCH_START_EVENT:String = "touchstart";
@@ -59,9 +59,11 @@ extern class BaseView extends Dispatcher
 	
 	// methods
 	public function add(view:Dynamic):Void;
-	public function remove(view:BaseView):Void;
+	public function remove(view:Dynamic):Void;
 	public function animate(obj:Dynamic, ?onComplete:Dynamic->Void):Void;
-	public function show():Void;
-	public function hide():Void;
+	public function show(?options:Dynamic):Void;
+	public function hide(?options:Dynamic):Void;	
+//	public function show():Void;
+//	public function hide():Void;
 	public function toImage(?onComplete:Dynamic->Void):Dynamic;
 }

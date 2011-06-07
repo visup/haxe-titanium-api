@@ -22,8 +22,7 @@ object
 
 - description
 
-The top level Accelerometer module.  The Accelerometer modules contains \
-methods and properties for using the device accelerometer.
+The top level Accelerometer module.  The Accelerometer modules contains methods and properties for using the device accelerometer.
 
 - since
 
@@ -81,10 +80,10 @@ Titanium.Accelerometer.removeEventListener('update',myFunction);
 
 typedef AccelerometerUpdateEvent = 
 { > Event,
-	timestamp:String,
 	x:Float,
 	y:Float,
-	z:Float
+	z:Float,
+	timestamp:String
 }
 
 @:native("Titanium.Accelerometer")

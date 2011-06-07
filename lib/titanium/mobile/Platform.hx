@@ -33,10 +33,15 @@ android, iphone, ipad
 
 openURL: open a URL in the system default manner
 createUUID: create a globally unique identifier
+canOpenURL: returns whether or not a system URL can be opened. iOS only
 
 - method : openURL
 
 url[string]: the url to open
+
+- method : canOpenURL
+
+url[string]: the url to check
 
 - method : createUUID, string
 
@@ -123,4 +128,7 @@ extern class Platform
 
 	public static function createUUID():String;
 	public static function openURL(url:String):Void;
+	#if iphoneos
+	public static function canOpenURL(url:String):Bool;
+	#end
 }

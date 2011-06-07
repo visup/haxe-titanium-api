@@ -137,7 +137,7 @@ extern class WebView extends BaseView
 	public inline static var LOAD_EVENT = "load";
 	
 	// properties
-	public var data:Blob;
+	public var data:Dynamic;
 	public var html:String;
 	public var loading:Bool;
 	public var scalesPageToFit:Bool;

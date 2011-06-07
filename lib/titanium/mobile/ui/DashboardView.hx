@@ -99,6 +99,16 @@ typedef DashboardViewDeleteEvent =
 	item:DashboardItem
 }
 
+typedef DashboardViewDragEndEvent = 
+{ > Event,
+	item:DashboardItem
+}
+
+typedef DashboardViewDragStartEvent = 
+{ > Event,
+	item:DashboardItem
+}
+
 typedef DashboardViewMoveEvent = 
 { > Event,
 	item:DashboardItem,
@@ -116,6 +126,8 @@ extern class DashboardView extends BaseView
 	public inline static var CLICK_EVENT = "click";
 	public inline static var COMMIT_EVENT = "commit";
 	public inline static var DELETE_EVENT = "delete";
+	public inline static var DRAG_END_EVENT = "dragEnd";
+	public inline static var DRAG_START_EVENT = "dragStart";
 	public inline static var EDIT_EVENT = "edit";
 	public inline static var MOVE_EVENT = "move";
 	

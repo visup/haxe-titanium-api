@@ -74,6 +74,7 @@ extern class ActivityIndicator extends Dispatcher
 	public var color:String;
 	public var font:Dynamic;
 	public var message:String;
+	public var messageid:String;
 	public var style:Int;
 	
 	// methods

@@ -31,6 +31,7 @@ iphone, ipad
 DONE[int]: The style for a done button - for example, a button that completes some task and returns to the previous view. 
 BORDERED[int]: A simple button style with a border.
 PLAIN[int]: Glows when tapped. The default item style.
+BAR[int]: Used by tabbed bar and button bar only to use the more condensed style used in nav bars and tool bars.
 
 **/
 #if iphoneos
@@ -42,5 +43,6 @@ extern class IPhoneSystemButtonStyle
 	public static var BORDERED:Int;
 	public static var PLAIN:Int;
 	public static var DONE:Int;
+	public static var BAR:Int;
 }
 #end

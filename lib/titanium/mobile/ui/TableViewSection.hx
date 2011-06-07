@@ -87,5 +87,8 @@ extern class TableViewSection extends BaseView
 	public var rowCount:Int;
 	
 	// methods
-	public function rowAtIndex(index:Int):TableViewRow;
+	override function add(row:Dynamic):Void;
+	//override function add(row:TableViewRow):Void;
+	override function remove(row:Dynamic):Void;	
+	//override function remove(row:TableViewRow):Void;
 }

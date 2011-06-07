@@ -71,9 +71,9 @@ extern class API
 	public static function fireEvent(name:String, event:Dynamic):Void;
 	public static function removeEventListener(name:String, eventListener:Dynamic->Void):Void;
 	
-	public static function debug(message:String):Void;
-	public static function error(message:String):Void;
 	public static function info(message:String):Void;
-	public static function log(level:String, message:String):Void;
+	public static function debug(message:String):Void;
 	public static function warn(message:String):Void;
+	public static function error(message:String):Void;
+	public static function log(level:String, message:String):Void;
 }

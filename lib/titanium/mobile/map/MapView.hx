@@ -43,6 +43,8 @@ addAnnotations: add one or more new annotation to the map
 removeAnnotation: remove an existing annotation from the map
 removeAnnotations: remove one or more existing annotations from the map
 removeAllAnnotations: removes all annotations added to the map
+setLocation: set and center the map location.
+setMapType: set the type of map (satellite, hybrid, standard)
 
 # 1.4
 addRoute: add a route. currently only supported on iphone
@@ -83,6 +85,14 @@ annotation[string,object]: either a string of the annotation title or a [Titaniu
 - method : zoom
 
 level[double]: zoom level (can be positive or negative)
+
+- method : setLocation
+
+location[object]: a dictionary that specifies the following properties specifying the location to set the map: `latitudeDelta`, `longitudeDelta`, `latitude`, `longitude`.
+
+- method : setMapType
+
+mapType[int]: the map type constant of either `Titanium.Map.STANDARD_TYPE`, `Titanium.Map.SATELLITE_TYPE` or `Titanium.Map.HYBRID_TYPE`.
 
 - properties
 
@@ -129,18 +139,18 @@ For Android, you will need to <a href="http://code.google.com/android/maps-api-s
 
 **/
 
-typedef MapViewClickEvent = 
-{ > TouchEvent,
-	annotation:MapAnnotation,
-	clicksource:String,
-	index:Int,
-	map:MapView,
-	title:String
-}
-
 typedef MapViewErrorEvent = 
 { > Event,
 	message:String
+}
+
+typedef MapViewClickEvent = 
+{ > TouchEvent,
+	clicksource:String,
+	annotation:MapAnnotation,
+	index:Int,
+	title:String,
+	map:MapView
 }
 
 @:native("Titanium.Map.MapView")
@@ -151,31 +161,33 @@ extern class MapView extends BaseView
 		return titanium.mobile.Map.createMapView(params)
 		
 	// events
-	public static inline var MAP_CLICK_EVENT:String = "click";
-	public static inline var ERROR_EVENT:String = "error";
-	public static inline var COMPLETE_EVENT:String = "loading";
-	public static inline var LOADING_EVENT:String = "loading";
 	public static inline var REGION_CHANGED_EVENT:String = "regionChanged";
+	public static inline var LOADING_EVENT:String = "loading";
+	public static inline var COMPLETE_EVENT:String = "loading";
+	public static inline var ERROR_EVENT:String = "error";
+	public static inline var MAP_CLICK_EVENT:String = "click";
 	
 	// properties
-	public var annotations:Array<MapAnnotation>;
-	public var location:Dynamic;
 	public var mapType:Int;
 	public var region:Dynamic;
 	public var regionFit:Bool;
 	public var userLocation:Bool;
+	public var location:Dynamic;
+	public var annotations:Array<MapAnnotation>;
 	
 	// methods
+	public function zoom(level:Float):Void;
+	public function selectAnnotation(annotation:Dynamic):Void;
+	public function deselectAnnotation(annotation:Dynamic):Void;
 	public function addAnnotation(annotation:Dynamic):Void;
 	public function addAnnotations(annotations:Dynamic):Void;
-	public function addRoute(route:Dynamic):Void;
-	public function deselectAnnotation(annotation:Dynamic):Void;
 	public function removeAnnotation(annotation:Dynamic):Void;
 	public function removeAnnotations(annotations:Dynamic):Void;
 	public function removeAllAnnotations():Void;
+	public function setLocation(location:Dynamic):Void;
+	public function setMapType(mapType:Int):Void;
 	#if iphoneos
+	public function addRoute(route:Dynamic):Void;
 	public function removeRoute(route:Dynamic):Void;
 	#end
-	public function selectAnnotation(annotation:Dynamic):Void;
-	public function zoom(level:Float):Void;
 }

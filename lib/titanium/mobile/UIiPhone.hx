@@ -75,6 +75,7 @@ animationStyle[int]: the animation style
 
 
 **/
+
 #if iphoneos
 @:native("Titanium.UI.iPhone")
 extern class UIiPhone

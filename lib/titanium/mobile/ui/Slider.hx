@@ -73,6 +73,12 @@ thumbSize[object]: a dictionary with properties width and height of the size of 
 
 typedef SliderChangeEvent = 
 { > Event,
+	#if androidos
+	thumbOffset:Dynamic,
+	thumbSize:Dynamic,
+	#end
+	value:String
+	
 }
 
 @:native("Titanium.UI.Slider")
@@ -96,6 +102,10 @@ extern class Slider extends BaseView
 	public var leftTrackImage:String;
 	public var max:Float;
 	public var min:Float;
+	#if androidos
+	public var minRange:Int;
+	public var maxRange:Int;
+	#end
 	public var rightTrackImage:String;
 	public var selectedLeftTrackImage:String;
 	public var selectedRightTrackImage:String;

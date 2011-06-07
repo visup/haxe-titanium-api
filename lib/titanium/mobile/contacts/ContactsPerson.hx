@@ -73,29 +73,30 @@ extern class ContactsPerson
 		return titanium.mobile.Contacts.createPerson(params)
 		
 	// properties
-	public var URL:Dynamic;
-	public var address:Dynamic;
-	public var birthday:String;
-	public var created:String;
-	public var date:Dynamic;
-	public var department:String;
-	public var email:Dynamic;
-	public var firstName:String;
-	public var firstPhonetic:String;
 	public var fullName:String;
-	public var image:Dynamic;
-	public var instantMessage:Dynamic;
-	public var jobTitle:String;
-	public var kind:Int;
+	public var birthday:String;
+	public var firstName:String;
 	public var lastName:String;
-	public var lastPhonetic:String;
 	public var middleName:String;
-	public var modified:String;
-	public var nickname:String;
-	public var note:String;
-	public var organization:String;
-	public var phone:Dynamic;
 	public var prefix:String;
-	public var relatedNames:Dynamic;
 	public var suffix:String;
+	public var nickname:String;
+	public var firstPhonetic:String;
+	public var lastPhonetic:String;
+	public var middlePhonetic:String;
+	public var organization:String;
+	public var jobTitle:String;
+	public var department:String;
+	public var note:String;
+	public var image:Dynamic;
+	public var created:String;
+	public var modified:String;
+	public var kind:Int;
+	public var email:Dynamic;
+	public var phone:Dynamic;
+	public var instantMessage:Dynamic;
+	public var relatedNames:Dynamic;
+	public var address:Dynamic;
+	public var date:Dynamic;
+	public var URL:Dynamic;
 }

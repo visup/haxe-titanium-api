@@ -80,10 +80,35 @@ openPreferences: open Android native preferences UI activity. You need to place 
 @:native("Titanium.UI.Android")
 extern class UIAndroid
 {
+	// static constants
+
+	public static var LINKIFY_ALL:Int;
+	public static var LINKIFY_EMAIL_ADDRESSES:Int;
+	public static var LINKIFY_MAP_ADDRESSES:Int;
+	public static var LINKIFY_PHONE_NUMBERS:Int;
+	public static var LINKIFY_MAP_LINKS:Int;
+	public static var LINKIFY_WEB_URLS:Int;
+	public static var SOFT_INPUT_ADJUST_PAN:Int;
+	public static var SOFT_INPUT_ADJUST_RESIZE:Int;
+	public static var SOFT_INPUT_ADJUST_UNSPECIFIED:Int;
+	public static var SOFT_INPUT_STATE_ALWAYS_HIDDEN:Int; 
+	public static var SOFT_INPUT_STATE_ALWAYS_VISIBLE:Int; 
+	public static var SOFT_INPUT_STATE_HIDDEN:Int;
+	public static var SOFT_INPUT_STATE_UNSPECIFIED:Int;
+	public static var SOFT_INPUT_STATE_VISIBLE:Int;
+	public static var SOFT_KEYBOARD_DEFAULT_ON_FOCUS:Int;
+	public static var SOFT_KEYBOARD_HIDE_ON_FOCUS:Int;
+	public static var SOFT_KEYBOARD_SHOW_ON_FOCUS:Int;
+	public static var SWITCH_STYLE_CHECKBOX:Int;
+	public static var SWITCH_STYLE_TOGGLEBUTTON:Int;
+
 	// static methods
 	public static function addEventListener(name:String, eventListener:Dynamic->Void):Void;
 	public static function fireEvent(name:String, event:Dynamic):Void;
 	public static function removeEventListener(name:String, eventListener:Dynamic->Void):Void;
 	
+	// methods
+	public function hideSoftKeyboard():Void;
+	public function openPreferences():Void;
 }
 #end

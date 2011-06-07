@@ -42,6 +42,8 @@ keyboardToolbar[array]: array of toolbar button objects to be used when the keyb
 keyboardToolbarColor[string]: the color of the keyboard toolbar 
 keyboardToolbarHeight[float]: the height of the keyboard toolbar
 suppressReturn[boolean]: boolean to indicate if the return key should be suppressed during entry
+autocapitalization[int]: One of `Titanium.UI.TEXT_AUTOCAPITALIZATION_NONE`, `Titanium.UI.TEXT_AUTOCAPITALIZATION_WORDS`, `Titanium.UI.TEXT_AUTOCAPITALIZATION_SENTENCES`, or `Titanium.UI.TEXT_AUTOCAPITALIZATION_ALL` to indicate how the field should be capitalized during typing. (only Android)
+autoLink[int]: whether or not to convert text within this area to clickable links.  iOS only.
 
 - methods
 
@@ -119,6 +121,7 @@ var textfield = Titanium.UI.createTextField({
 });
 ~~~
 
+
 **/
 
 typedef TextAreaBlurEvent = 
@@ -143,7 +146,7 @@ typedef TextAreaReturnEvent =
 
 typedef TextAreaSelectedEvent = 
 { > Event,
-	value:String
+	range:Dynamic
 }
 
 @:native("Titanium.UI.TextArea")
@@ -161,6 +164,12 @@ extern class TextArea extends BaseView
 	public static inline var SELECTED_EVENT = "selected";
 	
 	// properties
+	#if androidos
+	public var autocapitalization:Int;
+	#end
+	#if iphoneos
+	public var autoLink:Int;
+	#end
 	public var editable:Bool;
 	public var enabled:Bool;
 	public var keyboardToolbar:Array<Dynamic>;

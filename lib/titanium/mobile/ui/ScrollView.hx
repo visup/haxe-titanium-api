@@ -104,6 +104,11 @@ If your scrollable region fits within the size of the content area the scroll vi
 **/
 
 
+typedef ScrollViewScaleEvent = 
+{ > Event,
+	scale:Float
+}
+
 typedef ScrollViewScrollEvent = 
 { > Event,
 	decelerating:Bool,
@@ -120,6 +125,7 @@ extern class ScrollView extends BaseView
 		return titanium.mobile.UI.createScrollView(params)
 		
 	// events
+	public static inline var SCALE_EVENT = "scale";
 	public static inline var SCROLL_EVENT = "scroll";
 	
 	// properties

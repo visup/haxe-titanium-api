@@ -72,6 +72,9 @@ dialog.show();
 
 typedef OptionDialogClickEvent = 
 { > Event,
+	#if androidos
+	button:Bool,
+	#end
 	cancel:Bool,
 	destructive:Bool,
 	index:Int
@@ -91,6 +94,9 @@ extern class OptionDialog extends Dispatcher
 	public var cancel:Int;
 	public var destructive:Int;
 	public var options:Array<String>;
+	#if androidos
+	public var selectedIndex:Int;
+	#end
 	public var title:String;
 	
 	// methods

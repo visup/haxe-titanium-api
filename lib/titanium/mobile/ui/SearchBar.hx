@@ -115,8 +115,10 @@ extern class SearchBar extends BaseView
 	public var autocorrect:Bool;
 	public var barColor:String;
 	public var hintText:String;
+	public var hinttextid:String;
 	public var keyboardType:Int;
 	public var prompt:String;
+	public var promptid:String;
 	public var showCancel:Bool;
 	public var value:String;
 	

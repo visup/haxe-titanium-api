@@ -129,7 +129,8 @@ typedef PickerChangeEvent =
 	columnIndex:Int,
 	row:Dynamic,
 	rowIndex:Int,
-	selectedValue:Array<Dynamic>
+	selectedValue:Array<Dynamic>,
+	value:Date
 }
 
 @:native("Titanium.UI.Picker")
@@ -152,8 +153,14 @@ extern class Picker extends BaseView
 	public var selectionIndicator:Bool;
 	public var type:Int;
 	public var value:Date;
+	#if androidos
+	public var format24:Bool;
+	public var useSpinner:Bool;
+	public var visibleItems:Int;
+	#end
 	
 	// methods
+	override function add(data:Dynamic):Void;
 	public function setSelectedRow(col:Int, row:Int, animated:Bool):Void;
 	public function getSelectedRow(colIndex:Int):Dynamic;
 	public function reloadColumn(column:Dynamic):Void;
